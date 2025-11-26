@@ -1,0 +1,519 @@
+
+
+
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css');
+*{margin: 0px; padding: 0px;}
+body {font-family: "Lato", sans-serif; font-size: 14px;}
+.top-strip{
+font: 12px bold ;
+color: white;
+padding:8px 0px ;
+background-color: #368da7;
+
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* IE و Edge */
+  scrollbar-width: none;     /* Firefox */
+}
+
+
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.header{
+    width: 100%;
+    height: auto;
+  
+    padding: 10px 0px;
+}
+.header .logo img {
+    width: 70%;
+
+}
+.country{
+min-width: 150px;
+    width: 150px ;
+    height: 60px;
+    justify-content: flex-start;
+    text-align: left;
+    color: black;
+    border: solid 1px rgb(0, 0, 0,0.2)  !important;
+    border-radius: 7px;
+    padding: 10px 10px !important;
+}
+.label{
+    font-size: 12px !important;
+    text-transform: capitalize;
+color: rgb(0, 0, 0,0.5)  !important;
+line-height: 16px;
+}
+.name {
+ font-size: 14px !important;
+font-weight: 700;
+color: #368da7;
+line-height: 16px;
+}
+
+.Location_modal .MuiPaper-elevation{
+position: relative;
+    padding: 25px;
+}
+.Location_modal p{
+
+color: #707171;
+}
+.country_list{
+    margin: 0px 5px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    max-height: 400px;
+}
+.country_list li {
+
+   
+   
+   list-style: none;
+  
+   width: 100%;
+}
+.country_list li button{
+     padding: 10px 15px;
+ text-transform: capitalize;
+    width: 100%;
+
+   text-align: left !important;
+   background-color: transparent;
+   border: none;
+   border-top:solid #e9ecec;
+}
+.Location_modal .close{
+position: absolute;
+top: 2px;
+right: 2px;
+font-size: 20px;
+}
+.searchbox-wrapper{
+    background: #f3f4f7;
+    border-radius: 10px;
+    border: 1px solid rgb(0, 0, 0,0.1);
+}
+.searchbox{
+
+min-width: 300px;
+height: 50px;
+padding: 0px 20px;
+background: transparent !important;
+outline: none !important;
+font-size: 14px;
+color: #368da7;
+border: 0px !important;
+}
+.search_button{
+
+    border-radius: 50%;
+border: 0px !important;
+    padding: 6px;
+   
+}
+.search_button svg {
+
+
+    background: transparent;
+   color: #368da7;
+   font-size: 24px;
+}
+.left_items .profile-button ,.left_items .cart-button{
+    min-width: 50px;
+    height: 50px;
+    align-items: center;
+    justify-content: center;
+ border-radius: 50%;
+border: 2px solid #f3f4f7 !important;
+margin-left: 14px;
+background: none;
+    padding: 10px;
+
+}
+.left_items svg{
+
+    font-size: 24px;
+}
+.cart-button ,.Notices-button{
+    
+  background:#fff1ee !important;
+}
+.cart-button svg ,.Notices-button svg{
+color: orangered;
+
+}
+
+.cart-button span ,.Notices-button span{
+    position: absolute;
+    top: -6px;
+right: -4px;
+
+color: #fff1ee;
+background-color: tomato;
+width: 20px;
+height: 20px;
+border-radius: 50%;
+}
+.catwrapper {position: relative;}
+
+.catwrapper .sidebar {
+    position: absolute;
+    top: 100%;
+    left: -20px;
+    min-width: 200px;
+    max-height: 400px;
+    background-color: #fff;
+    opacity: 0;
+    visibility: hidden;
+    margin-top: 10px;
+    transition: all 0.5s ease-in-out;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    z-index: 100;
+
+}
+.sidebar ul li ,.Dash_Sidebar ul a {
+    height: 100%;
+ list-style: none;
+    text-decoration: none;
+ position: static;
+}
+.sidebar ul li a{
+
+    text-decoration: none;
+
+}
+.catwrapper:hover .sidebar {
+  
+    opacity: 1;
+    visibility: visible;
+}
+
+.sidebar .sub-menu {
+    opacity: 0;
+visibility: hidden;
+    position: absolute;
+    top: 0px;
+    left: 110%;
+    min-width: 250px;
+    height: auto;
+    z-index: 100;
+    background-color: #fff;
+    transition: all 0.2s ease-in-out;
+    border-left: solid rgb(0, 0, 0,0.1);
+}
+.sidebar li:hover .sub-menu{
+
+    visibility: inherit;
+    opacity: 1;
+    left: 100%;
+}
+.sidebar ul li  {
+
+    position: relative;
+}
+.sidebar ul li svg {
+position: absolute;
+right: 2px;
+    font-size: 16px;
+    
+}
+.allcat_btn 
+{
+width: 180px;
+  padding: 12px;  
+  border-radius: 50px;
+border: none;
+background-color: #368da7;
+color: white;
+font-size: 14px;
+text-transform:uppercase;
+display: flex;
+justify-content: space-between;
+align-items: center;
+
+}
+.all-categories .allcat_btn:hover {
+   background-color: #45a7c5;
+}
+.navlist ul li a , .navlist ul li button ,.sidebar button{
+font-size: 14px;
+font-weight: 700px;
+text-decoration: none;
+color: rgba(0, 0, 0, 0.7);
+text-transform: uppercase;
+padding: 7px 17px;
+border: none;
+background-color: transparent;
+border-radius: 25px;
+transition: all 0.5s ease-in-out;
+display: flex;
+justify-content: space-between;
+
+}
+.navlist ul li a:hover{
+
+    background-color: #368da7;
+    color: white;
+}
+.navlist ul li a svg{
+
+    font-size: 18px;
+   
+}
+.navlist ul li {
+    position: relative;
+}
+.navlist ul li .sub-menu{
+    opacity: 0;
+  visibility: hidden;
+position: absolute;
+margin-top: 10px;
+top: 100%;
+left: -20px;
+min-width: 200px;
+z-index: 10;
+background-color: #fff;
+
+}
+.navlist ul li:hover .sub-menu{
+    opacity: 1;
+    visibility: visible;
+    transition: all 0.5s ease-in-out;
+    z-index: 100;
+}
+.homeBannerSection {
+
+    position: relative;
+    overflow: hidden;
+}
+
+
+ .swiper-button-prev:after, 
+ .swiper-button-next:after {
+    position: absolute !important;
+    bottom: 45% !important;
+    z-index: 10 !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    font-size: 17px !important; /* حجم أصغر */
+    width: 40px !important;      /* عرض أصغر */
+    height: 40px !important;     /* ارتفاع أصغر */
+    color: tomato !important;
+    background: rgba(255, 255, 255, 0.158) !important; /* لو حابة خلفية صغيرة شفافة */
+    border-radius: 50% !important;
+}
+
+.slick-arrow.slick-prev ,.swiper-button-prev{
+    left: 25px !important;
+
+}
+.slick-arrow.slick-next ,.swiper-button-next{
+
+right: 25px !important;
+}
+
+.homecatSection .item img{
+
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: aqua;
+}
+.homecatSection .swiper-slide .swiper-slide-prev{
+    width: 10px;
+    height: 10px;
+
+}
+.homecatSection .swiper-button-next.swiper-button-disabled{
+
+     display: block;
+}
+.homecatSection .swiper-button-prev.swiper-button-disabled{
+
+     display: block;
+}
+
+.homeproducts{
+padding: 25px 0px;
+    width: 100%;
+
+}
+.homeproducts .banner {
+    width: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.MuiTabs-indicator{
+
+    background-color:tomato !important;
+}
+.MuiTab-textColorPrimary.Mui-selected{
+ color:#ff6347 !important;
+
+}
+.info a{
+text-decoration: none;
+color: #000000;
+
+}
+.info a:hover{
+
+color:rgb(255, 99, 71);
+}
+.Productslider .swiper-wrapper{
+padding: 15px;
+margin: 0px -15px;
+}
+.Blog_Item svg{
+color: tomato;
+}
+.Blog_Item a{
+color: tomato;
+}
+.features svg , footer svg{
+    width: 40px;
+    height: 40px;
+    color: #ff6347;
+}
+footer .part a ,.p1 {
+    font-size: 14px;
+    text-decoration: none;
+    color: rgb(0, 0, 0,0.5);
+}
+.part{
+    border-right: solid rgb(0, 0, 0,0.08) ;
+}
+.social-list li{
+margin: 10px;
+}
+.social-list svg {
+    color: #000000;
+    height: 1.5em;
+    width: 1.5em;
+}
+.social-list svg:hover{
+    
+    color: #ff6347;
+}
+.bottomStrip img{
+    width: 40px !important;
+    height: 40px !important;
+}
+.slick-slider img{
+    height: 400px;
+}
+.zoomslider .swiper-slide{
+    height: auto !important;
+}
+/* .zoomslider .swiper-button-next::after{
+  transform: rotate( 90deg);
+}
+.zoomslider .swiper-button-prev::after{
+   transform: rotate( 90deg);
+}
+.zoomslider .swiper-button-prev{
+
+    top: 20px !important;
+    left: 0px !important;
+    width: 100% !important;
+    height: 30px !important;
+    border-radius: 0px !important;
+}
+.zoomslider .swiper-button-next{
+
+    top: inherit !important;
+    bottom: 0px !important;
+    right: inherit !important;
+    width: 100% !important;
+    height: 30px !important;
+    border-radius: 0px !important;
+} */
+ .ContentContainer .size  button{
+    width: 40px;
+    height: 30px;
+    border: solid 1px rgb(0, 0, 0,0.1);
+    border-radius: 3px;
+ }
+ .css-10d30g3-MuiPaper-root-MuiDialog-paper{
+
+    max-width: 900px !important;
+ }
+.registerList {
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+padding-left: 15px !important;
+  margin-top: 10px;
+  top: 100%;
+  left: 0px;
+  min-width: 100px;
+  min-height: 100px;
+  z-index: 10;
+  background-color: white;
+  transition: all 0.5s ease-in-out;
+}
+.registerList li a ,.registerList li button{
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.7);
+}
+.registerList li a:hover ,.registerList li button:hover{
+    color: #ff6347;
+   ;
+}
+
+.profile-wrapper:hover .registerList {
+  opacity: 1;
+  visibility: visible;
+  z-index: 100;
+}
+
+.CartWrapper a {
+    text-decoration: none !important;
+    color: white;
+}
+.CartPage .CartInfo a{
+    position: absolute;
+    text-decoration: none;
+   top: 100px;
+}
+.PersonalInfo svg{
+    width: 30px;
+    height: 30px;
+    color: #368da7;
+}
+.css-s09cke-MuiTablePagination-selectLabel,.css-11cfq65-MuiTablePagination-displayedRows 
+{
+margin-bottom: 0px !important;
+}
+.css-oegngy-MuiInputBase-root-MuiTablePagination-select,.css-1gak8h1-MuiToolbar-root-MuiTablePagination-toolbar .MuiTablePagination-actions{
+
+    margin-right: 2px !important;
+    margin-left:2px !important ;
+   
+}
+  .css-1gak8h1-MuiToolbar-root-MuiTablePagination-toolbar{
+ padding-left: 0px !important;
+}
+.css-h7cjts-MuiButtonBase-root-MuiIconButton-root.Mui-disabled {
+
+    padding: 0px;
+}
+.MuiPaper-root .MuiPaper-elevation .MuiPaper-rounded .MuiPaper-elevation1 .css-q9kvn6-MuiPaper-root{
+background-color: #e12323 !important;
+
+}
+
