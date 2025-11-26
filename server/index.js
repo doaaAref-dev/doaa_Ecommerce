@@ -16,8 +16,11 @@ const app = express();
 // connect to DB
 connectDB();
 
-app.use(cors());
-app.use("/default", express.static("default"));
+app.use(cors({
+  origin: "https://doaa-ecomm-project.netlify.app",
+  credentials: true
+}));
+
 
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
