@@ -1,4 +1,4 @@
-// server.js
+// index.js
 const express = require('express');
 const dotenv = require('dotenv');
 const cors = require('cors');
@@ -10,6 +10,7 @@ const userRoutes = require("./route/AdminUsers.route");
 const logoRoutes=require("./route/logo.route");
 const authRoutes = require("./route/auth.routes");
 const orderRoutes = require("./route/orderRoutes");
+const serverless = require("serverless-http");
 dotenv.config();
 const app = express();
 
@@ -17,10 +18,8 @@ const app = express();
 connectDB();
 
 app.use(cors());
-
-
-
 app.use("/default", express.static("default"));
+
 
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
@@ -32,16 +31,7 @@ app.use(helmet());
 app.use(express.json({ limit: "10mb" }));
 app.use(express.urlencoded({ limit: "10mb", extended: true }));
 
-// app.use(cors({
-//   origin: (origin, callback) => {
-//     if (!origin || allowedOrigins.includes(origin)) {
-//       callback(null, true);
-//     } else {
-//       callback(new Error("Not allowed by CORS"));
-//     }
-//   },
-//   credentials: true
-// }));
+
 
 
 app.use(morgan('dev'));
@@ -68,5 +58,5 @@ app.use("/api/logo", logoRoutes);
 // error handler
 app.use(require('./middleware/error.middleware'));
 
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+module.exports = app;             // عشان نقدر نختبر محلي
+module.exports.handler = serverless(app);  // لازم لـ Vercel
