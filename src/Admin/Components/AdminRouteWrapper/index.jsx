@@ -1,5 +1,4 @@
-import { Routes, Route, Navigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { Routes, Route } from "react-router-dom";
 
 import Header from "../Header";
 import SideBar from "../SideBar";

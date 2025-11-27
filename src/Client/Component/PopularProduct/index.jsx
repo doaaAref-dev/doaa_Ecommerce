@@ -58,7 +58,7 @@ export default function PopularProducts() {
                 scrollButtons="auto"
               >
                 {/* ✅ عرض أول 3 كاتيجوري فقط */}
-                {categories.slice(0, 3).map((cat, i) => (
+                {categories.slice(0, 3).map((cat) => (
                   <Tab key={cat._id} label={cat.name} />
                 ))}
               </Tabs>

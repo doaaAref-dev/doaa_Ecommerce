@@ -54,7 +54,7 @@ export default function Checkout() {
     };
 
     try {
-      const response = await axios.post(
+      await axios.post(
         "http://localhost:5000/api/orders",
         orderData,
         {

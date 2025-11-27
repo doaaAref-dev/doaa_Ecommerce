@@ -1,56 +1,13 @@
 import React from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import Quantity from "../../Component/QtyBox";
 import { Link, useNavigate } from "react-router-dom";
 import ProductSlice from "../../Component/ProductSlider";
-import axios from "axios";
-import { clearCart } from "../../redux/Slices/cartSlice";
 
 export default function MyCart() {
-  const { items, totalPrice, totalQty } = useSelector((state) => state.cart);
+  const { items, totalPrice } = useSelector((state) => state.cart);
   const user = useSelector((state) => state.auth.user); // لو عندك auth slice
-  const dispatch = useDispatch();
   const navigate = useNavigate();
-
-  const handleCheckout = async () => {
-    if (!user) {
-      alert("Please login first");
-      navigate("/login");
-      return;
-    }
-
-    const orderData = {
-      userId: user._id,
-      items: items.map((item) => ({
-        productId: item._id,
-        name: item.name,
-        qty: item.qty,
-        price: item.price,
-        discount: item.discount || 0,
-        total: item.qty * (item.price - (item.price * item.discount) / 100),
-      })),
-      totalQty,
-      totalPrice,
-      status: "pending",
-      date: new Date(),
-    };
-
-    try {
-       console.log("🟢 Sending orderData:", orderData);
-  console.log("🟢 Token before request:", localStorage.getItem("token"));
-
-      await axios.post("http://localhost:5000/api/orders", orderData, {
-        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-      });
-       console.log("✅ Order response:", response.data);
-      alert("Order placed successfully!");
-      dispatch(clearCart());
-      navigate("/orders"); // أو صفحة الشكر بعد الدفع
-    } catch (error) {
-      console.error(error);
-      alert("Failed to place order");
-    }
-  };
 
   return (
     <div className="CartPage p-6">

@@ -36,7 +36,7 @@ const handleSubmit = async () => {
 
 
 try {
-  const result = await dispatch(addReview({ productId, data: newReview })).unwrap();
+  await dispatch(addReview({ productId, data: newReview })).unwrap();
 
   dispatch(fetchReviews(productId));
   setRating(0);

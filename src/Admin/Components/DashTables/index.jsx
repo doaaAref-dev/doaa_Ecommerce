@@ -49,27 +49,6 @@ export function DahTables({ columns, rows, title,setOrders }) {
   const handleToggleRow = (rowId) => {
     setOpenRows((prev) => ({ ...prev, [rowId]: !prev[rowId] }));
   };
-const handleChange = async (e, row) => {
-  const newStatus = e.target.value;
-
-  if (!allowedTransitions[row.status]?.includes(newStatus)) {
-    alert(`Cannot change status from ${row.status} to ${newStatus}`);
-    return;
-  }
-
-  try {
-    const token = localStorage.getItem("token");
-    await api.patch(`/orders/${row._id}/status`, { status: newStatus }, {
-      headers: { Authorization: `Bearer ${token}` },
-    });
-
-    setOrders((prev) =>
-      prev.map((o) => (o._id === row._id ? { ...o, status: newStatus } : o))
-    );
-  } catch (err) {
-    console.error("Error updating status:", err);
-  }
-};
 
   const handleChangePage = (event, newPage) => setPage(newPage);
 

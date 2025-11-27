@@ -1,16 +1,15 @@
 
-import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import { Navigation } from 'swiper/modules'
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { useSelector, useDispatch } from "react-redux";
 import { fetchCategories } from "../../redux/Slices/categorySlice";
 export default function HomeCat() {
-    const { categories, loading } = useSelector((state) => state.category);
+    const { categories } = useSelector((state) => state.category);
     // console.log(categories);
     const dispatch = useDispatch();
 const navigate = useNavigate();

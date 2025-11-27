@@ -6,7 +6,6 @@ import 'swiper/css'
 import 'swiper/css/navigation'
 import BlogItem from "../../Component/BlogItem"
 import { fetchBlogs } from "../../redux/Slices/blogSlice"
-import img9 from '../../../assets/images/tv.png'
 
 export default function Blogs() {
   const dispatch = useDispatch()

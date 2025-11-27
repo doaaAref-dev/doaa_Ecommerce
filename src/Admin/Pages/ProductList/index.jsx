@@ -6,12 +6,9 @@ import { DahTables } from "../../Components/DashTables";
 import { RiDeleteBinLine } from "react-icons/ri";
 import { deleteProduct } from "../../../Client/redux/Slices/productSlice"; // تأكدي من المسار
 import { Dialog, DialogTitle, DialogContent, DialogActions, Button, Typography } from "@mui/material";
-import { CiEdit } from "react-icons/ci";
-import { useNavigate } from "react-router-dom";
 
 export default function ProductList() {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const { products, loading, error } = useSelector((state) => state.products);
 const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
@@ -37,7 +34,6 @@ const confirmDelete = (product) => {
 
   useEffect(() => {
     dispatch(fetchProducts());
-console.log(products);
   }, [dispatch]);
 
   const ProductList_rows = products.map((p) => ({

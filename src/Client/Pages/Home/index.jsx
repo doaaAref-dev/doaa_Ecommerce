@@ -1,10 +1,6 @@
 import HomeBanner from "../../Component/HeaderSlider";
 import HomeCat from "../../Component/HomeCat";
 import BannerSlider from "../../Component/BannerSlider";
-import Tabs from '@mui/material/Tabs';
-import * as React from 'react';
-import Tab from '@mui/material/Tab';
-import Productslice from '../../Component/ProductSlider'
 import { LiaShippingFastSolid } from "react-icons/lia";
 import { GiReturnArrow } from "react-icons/gi";
 import { BsWallet2 } from "react-icons/bs";
@@ -29,11 +25,6 @@ import PopularProduct from "../../Component/PopularProduct"
 import LatestProduct from "../../Component/LatestProduct"
 import Blogs from "../../Component/Blogs";
 export default  function Home (){
- const [value, setValue] = React.useState(0);
-
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
 
 return(
     <>
@@ -43,7 +34,6 @@ return(
 
   <HomeCat/>
 <PopularProduct/>
- 
   
   <section className="row mt-4 g-4">
   {/* Banner */}

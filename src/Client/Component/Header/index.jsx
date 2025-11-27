@@ -23,7 +23,7 @@ export default function Header() {
 const navigate = useNavigate();
   const { user} = useSelector((state) => state.auth);
 
-  const { categories, loading } = useSelector((state) => state.category);
+  const { categories } = useSelector((state) => state.category);
 
 console.log(categories);
 
@@ -36,7 +36,6 @@ console.log(categories);
 
   const handleClickOutside = (e) => {
     if (!e.target.closest(".catwrapper")) {
-      setOpenCat(false);
       setHoveredCat(null);
     }
   };
@@ -159,7 +158,7 @@ console.log(categories);
                     {/* المينيو الجانبية للسوب كاتيجوري */}
                     {hoveredCat === cat._id && cat.subCategories?.length > 0 && (
                       <div className="absolute top-0 left-full bg-white shadow-lg p-3 w-56  min-h-full">
-                        {cat.subCategories.map((sub, idx) => (
+                        {cat.subCategories.map((sub) => (
                             <button className="block w-full text-left px-2 py-1 text-gray-600 hover:text-black hover:bg-gray-50 rounded"  onClick={() => navigate(`/category/${sub}`)}>
                               {sub}
                             </button>

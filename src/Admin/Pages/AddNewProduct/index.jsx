@@ -122,7 +122,6 @@ countInStock
     dispatch(fetchCategories());
   }, [dispatch]);
 const selectedCat = categories?.find((cat) => cat._id === categoryId);
-const availableSubcategories = selectedCat?.subCategories || [];
   return (
     <div className="flex !pl-[270px] !pt-[100px] gap-3">
       <form className="w-full flex gap-3" onSubmit={handleSubmit}>

@@ -20,9 +20,6 @@ export default function ProductInfo({ product: propProduct, related = false }) {
   const { singleProduct, categoryProducts, loading, error } = useSelector(
     (state) => state.products
   );
-  const { user} = useSelector(
-    (state) => state.auth
-  );
   const [revOpen, setRevOpen] = useState(false);
   const [qty, setQty] = useState(1);
 const { wishlistItems } = useSelector((state) => state.wishlist);

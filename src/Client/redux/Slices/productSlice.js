@@ -118,7 +118,7 @@ export const deleteProduct = createAsyncThunk(
   "products/deleteProduct",
   async ({ productId, token }, { rejectWithValue }) => {
     try {
-      const res = await api.delete(`/products/${productId}`, {
+      await api.delete(`/products/${productId}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       return productId; // نرجع ID للحذف من Redux

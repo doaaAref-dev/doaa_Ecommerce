@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react'
 import { Dialog, DialogBackdrop, DialogPanel, DialogTitle, TransitionChild } from '@headlessui/react'
 import { XMarkIcon } from '@heroicons/react/24/outline'
 import IconButton from '@mui/material/IconButton';
@@ -14,10 +13,9 @@ export function Info({
   Qnt,
   customgap,
   Font,
-  orders,
    // 🟢 بنستقبل المنتجات اللي في الكارت
 }) {
-    const { items, totalPrice, totalQty } = useSelector((state) => state.cart);
+    const { items, totalPrice } = useSelector((state) => state.cart);
   
   const defaultStyle = "flex flex-col gap-[50px]";
   const defaultgap = "flex gap-3";
