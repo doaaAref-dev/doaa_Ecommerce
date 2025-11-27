@@ -1,6 +1,6 @@
 import HomeBanner from "../../Component/HeaderSlider";
 import HomeCat from "../../Component/HomeCat";
-import BannerSlider from "../../Component/bannerSlider";
+import BannerSlider from "../../Component/BannerSlider";
 import Tabs from '@mui/material/Tabs';
 import * as React from 'react';
 import Tab from '@mui/material/Tab';
