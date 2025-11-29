@@ -12,17 +12,16 @@ function App() {
 
   return (
    <Routes>
-  {/* Routes مشتركة لأي حد */}
+ 
 
   <Route path="/Login" element={<Login />} />
   <Route path="/SignUp" element={<SignUp />} />
 
-  {/* لو أدمن */}
   {user?.role === "admin" && (
     <Route path="/admin/*" element={<AdminRouteWrapper />} />
   )}
 
-  {/* لو مستخدم عادي */}
+
   
   {user?.role !== "admin" && (
   <Route path="/*" element={<ClientRouteWrapper />} />
@@ -30,7 +29,7 @@ function App() {
 
   
 
-  {/* Route fallback */}
+
 </Routes>
 
   );

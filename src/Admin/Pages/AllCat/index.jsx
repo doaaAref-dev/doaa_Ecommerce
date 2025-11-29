@@ -27,13 +27,11 @@ export default function AllCat() {
   const dispatch = useDispatch();
   const { categories } = useSelector((state) => state.category);
 
-  // modal states
   const [open, setOpen] = useState(false);
   const [selectedCat, setSelectedCat] = useState(null);
   const [selectedSubIndex, setSelectedSubIndex] = useState(null);
   const [selectedSubMode, setSelectedSubMode] = useState(false);
 
-  // form states
   const [name, setName] = useState("");
   const [status, setStatus] = useState("active");
   const [imageFile, setImageFile] = useState(null);
@@ -41,11 +39,9 @@ export default function AllCat() {
   const [newSubInput, setNewSubInput] = useState("");
   const [editingSubValue, setEditingSubValue] = useState("");
 
-  // delete confirm modal states
   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
-  const [deleteTarget, setDeleteTarget] = useState(null); // { type: "category"|"sub", cat, idx? }
+  const [deleteTarget, setDeleteTarget] = useState(null); 
 
-  // load categories
   useEffect(() => {
     dispatch(fetchCategories());
   }, [dispatch]);
@@ -100,9 +96,7 @@ export default function AllCat() {
     setSubCats((prev) => prev.filter((_, i) => i !== idx));
   };
 
-  // -------------------------
-  // Delete sub (with confirm dialog)
-  // -------------------------
+  
   const confirmDeleteSub = (cat, idx) => {
     setDeleteTarget({ type: "sub", cat, idx });
     setDeleteDialogOpen(true);
@@ -116,9 +110,7 @@ export default function AllCat() {
       .then(() => dispatch(fetchCategories()));
   };
 
-  // -------------------------
-  // Save edited category
-  // -------------------------
+ 
   const handleSaveCategory = () => {
     if (!selectedCat) return;
     const formData = new FormData();
@@ -139,9 +131,7 @@ export default function AllCat() {
       });
   };
 
-  // -------------------------
-  // Save edited single sub
-  // -------------------------
+ 
   const handleSaveSubOnly = () => {
     if (!selectedCat || selectedSubIndex === null) return;
     const arr = Array.isArray(selectedCat.subCategories) ? [...selectedCat.subCategories] : [];
@@ -158,9 +148,7 @@ export default function AllCat() {
       });
   };
 
-  // -------------------------
-  // Delete whole category (with confirm dialog)
-  // -------------------------
+ 
   const confirmDeleteCategory = (cat) => {
     setDeleteTarget({ type: "category", cat });
     setDeleteDialogOpen(true);
@@ -215,7 +203,6 @@ export default function AllCat() {
     <div className="ProductList_Content !pl-[300px] !py-[100px] flex flex-col gap-3 !pr-[50px] bg-[#8fbac740]">
       <DahTables columns={CategoryList_columns} rows={CategoryList_rows} title="All Categories" />
 
-      {/* Edit Modal */}
       <Dialog open={open} onClose={() => setOpen(false)} maxWidth="sm" fullWidth>
         <DialogTitle>{selectedSubMode ? "Edit Sub Category" : "Edit Category"}</DialogTitle>
 
@@ -285,7 +272,6 @@ export default function AllCat() {
                     </Box>
                   ))}
 
-                  {/* add new sub */}
                   <Box sx={{ display: "flex", gap: 1, mt: 1 }}>
                     <TextField
                       size="small"
@@ -332,7 +318,6 @@ export default function AllCat() {
         </DialogActions>
       </Dialog>
 
-      {/* Delete Confirmation Modal */}
       <Dialog open={deleteDialogOpen} onClose={() => setDeleteDialogOpen(false)}>
         <DialogTitle>Confirm Delete</DialogTitle>
         <DialogContent>

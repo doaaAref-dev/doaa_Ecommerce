@@ -6,7 +6,7 @@ import {
   addTag,
   removeTag,
   addProduct,
-} from "../../../Client/redux/Slices/productSlice"; // عدل المسار
+} from "../../../Client/redux/Slices/productSlice"; 
 import { fetchCategories } from "../../../Client/redux/Slices/categorySlice";
 import {
   TextField,
@@ -65,11 +65,11 @@ countInStock
   const { categories,CatLoading} = useSelector((state) => state.category);
  
 
-  // الصور فقط تبقى محلية
+
   const [images, setImages] = useState([]);
   const [inputValue, setInputValue] = useState("");
 
-  // Tags
+
   const handleAddChip = () => {
     if (inputValue.trim() === "") return;
     dispatch(addTag(inputValue.trim()));
@@ -80,9 +80,9 @@ countInStock
     dispatch(removeTag(chip));
   };
 
-  // Images
+
   const handleUpload = (e) => {
-    const files = Array.from(e.target.files).slice(0, 4); // حد أقصى 4 صور
+    const files = Array.from(e.target.files).slice(0, 4);
     setImages((prev) => [...prev, ...files].slice(0, 4));
   };
 
@@ -90,7 +90,7 @@ countInStock
     setImages((prev) => prev.filter((_, i) => i !== index));
   };
 
-  // Submit
+ 
  const handleSubmit = (e) => {
   e.preventDefault();
 
@@ -101,19 +101,16 @@ countInStock
   formData.append("price", price);
   formData.append("discount", discount);
   formData.append("categoryId", categoryId);
-  // optional: add countInStock input if you have it; else default on backend
   formData.append("countInStock", countInStock);
   formData.append("Quantity", Quantity);
 
-  // append arrays — use same key multiple times
   colors.forEach((c) => formData.append("colors", c));
   sizes.forEach((s) => formData.append("sizes", s));
   tags.forEach((t) => formData.append("tags", t));
 
-  // images: use the same key 'images' for multer upload.array('images', ...)
   images.forEach((img) => formData.append("images", img));
 
-  const token = localStorage.getItem("token"); // or from authSlice
+  const token = localStorage.getItem("token");
   dispatch(addProduct({ formData, token }));
   console.log([...formData]);
 };
@@ -125,7 +122,6 @@ const selectedCat = categories?.find((cat) => cat._id === categoryId);
   return (
     <div className="flex !pl-[270px] !pt-[100px] gap-3">
       <form className="w-full flex gap-3" onSubmit={handleSubmit}>
-        {/* الشمال */}
         <div className="w-[65%] shadow rounded-2 p-3 flex-col gap-3">
           <h2>General Information</h2>
           <div className="flex flex-col gap-3">
@@ -223,7 +219,6 @@ const selectedCat = categories?.find((cat) => cat._id === categoryId);
                 />
               </div>
             </div>
-            {/* Colors & Sizes */}
             <div className="flex gap-3 w-full">
               <div className="w-[50%]">
                 <FormControl className="w-full">
@@ -271,7 +266,6 @@ const selectedCat = categories?.find((cat) => cat._id === categoryId);
               </div>
             </div>
 
-            {/* Buttons */}
             <div className="flex justify-between">
               <button
                 type="button"
@@ -298,10 +292,8 @@ const selectedCat = categories?.find((cat) => cat._id === categoryId);
           </div>
         </div>
 
-        {/* اليمين */}
         <div className="w-[35%] shadow rounded-2 p-3">
           <div className="flex flex-col gap-3">
-            {/* Tags */}
             <div>
               <div className="flex justify-between mb-3">
                 <TextField
@@ -344,7 +336,6 @@ const selectedCat = categories?.find((cat) => cat._id === categoryId);
               </Paper>
             </div>
 
-            {/* Images */}
             <div
               style={{
                 border: "2px dashed #ccc",
@@ -433,9 +424,7 @@ const selectedCat = categories?.find((cat) => cat._id === categoryId);
               </div>
             </div>
 
-            {/* Categories */}
     <div>
- {/* Category Dropdown */}
 <Box sx={{ minWidth: 120, mb: 2 }}>
   <FormControl fullWidth>
     <InputLabel>Category</InputLabel>
@@ -446,10 +435,8 @@ const selectedCat = categories?.find((cat) => cat._id === categoryId);
 
         dispatch(setField({ field: "categoryId", value: selectedCatId }));
 
-        // Reset subcategory on change
         dispatch(setField({ field: "subcategoryId", value: "" }));
 
-        // Find subcategories of selected category
         const selectedCat = categories.find((c) => c._id === selectedCatId);
 
         dispatch(
@@ -469,7 +456,6 @@ const selectedCat = categories?.find((cat) => cat._id === categoryId);
   </FormControl>
 </Box>
 
-{/* Subcategory Dropdown */}
 {categoryId && (
   <Box sx={{ minWidth: 120, mt: 3 }}>
     <FormControl fullWidth>

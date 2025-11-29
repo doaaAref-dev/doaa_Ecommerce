@@ -1,7 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import API_URL from "../../../api/axios";
 
-// إضافة Slide جديد
 export const addSlide = createAsyncThunk(
   "homeSlider/addSlide",
   async (formData, { rejectWithValue }) => {
@@ -16,7 +15,6 @@ export const addSlide = createAsyncThunk(
   }
 );
 
-// جلب كل Slides
 export const fetchSlides = createAsyncThunk(
   "homeSlider/fetchSlides",
   async (_, { rejectWithValue }) => {
@@ -29,7 +27,6 @@ export const fetchSlides = createAsyncThunk(
   }
 );
 
-// تحديث Slide
 export const updateSlide = createAsyncThunk(
   "homeSlider/updateSlide",
   async ({ id, formData }, { rejectWithValue }) => {
@@ -44,7 +41,6 @@ export const updateSlide = createAsyncThunk(
   }
 );
 
-// حذف Slide
 export const deleteSlide = createAsyncThunk(
   "homeSlider/deleteSlide",
   async (id, { rejectWithValue }) => {
@@ -67,7 +63,6 @@ const homeSliderSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      // add
       .addCase(addSlide.pending, (state) => {
         state.loading = true;
       })
@@ -80,7 +75,6 @@ const homeSliderSlice = createSlice({
         state.error = action.payload;
       })
 
-      // fetch
       .addCase(fetchSlides.pending, (state) => {
         state.loading = true;
       })
@@ -93,14 +87,12 @@ const homeSliderSlice = createSlice({
         state.error = action.payload;
       })
 
-      // update
       .addCase(updateSlide.fulfilled, (state, action) => {
         state.slides = state.slides.map((s) =>
           s._id === action.payload._id ? action.payload : s
         );
       })
 
-      // delete
       .addCase(deleteSlide.fulfilled, (state, action) => {
         state.slides = state.slides.filter((s) => s._id !== action.payload);
       });

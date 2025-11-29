@@ -9,7 +9,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { addToWishlist, removeFromWishlist } from "../../redux/Slices/wishlistSlice";
 import toast from "react-hot-toast";
 export default function ProductItem({ product}) {
-  console.log("gggggg"+product);
   
   const [open, setOpen] = useState(false);
 const dispatch = useDispatch();
@@ -22,7 +21,6 @@ const dispatch = useDispatch();
   
   const discount = product.discount || 0;
 
-  // احسبي السعر بعد الخصم إن وجد
   const discountedPrice = discount
     ? (product.price - (product.price * discount) / 100).toFixed(2)
     : product.price;
@@ -34,13 +32,13 @@ const dispatch = useDispatch();
       toast("Removed from wishlist 🖤");
     } else {
       dispatch(addToWishlist(product));
-      toast.success("Added to wishlist 💖");
+      toast.success("Added to wishlist");
     }
   };
 
   return (
     <div className="Product_Item shadow-sm rounded-md overflow-hidden mt-4 border-2 border-[rgba(0,0,0,0.1)] transition-transform duration-300 hover:scale-105 hover:shadow-2xl hover:border-[tomato]">
-      {/* ==== الصورة ==== */}
+   
       <div className="img-wrapper w-full h-[150px] relative bg-gray-50 flex items-center justify-center group">
         <Link to={`/Card/${product._id}`}>
           <div className="relative h-[220px] overflow-hidden group">
@@ -57,14 +55,14 @@ const dispatch = useDispatch();
           </div>
         </Link>
 
-        {/* ==== الخصم ==== */}
+      
         {discount > 0 && (
           <span className="absolute top-[10px] left-[10px] px-2 py-1 rounded-lg bg-[#ff6347] text-white text-xs font-semibold shadow-md">
             {discount}%
           </span>
         )}
 
-        {/* ==== الأزرار ==== */}
+       
         <div className="actions absolute top-[10px] right-[5px] flex flex-col gap-2 opacity-80 transition-opacity duration-200 group-hover:opacity-100">
           <button
             className="bg-white p-2 rounded-full text-red-500 w-[34px] h-[34px] shadow hover:bg-[tomato] hover:text-white transition-colors duration-200"
@@ -89,7 +87,7 @@ const dispatch = useDispatch();
         </div>
       </div>
 
-      {/* ==== التفاصيل ==== */}
+   
       <div className="info p-4 mt-2 h-[150px] flex flex-col justify-between">
         <h6 className="my-2 font-semibold text-gray-800 hover:text-[tomato] transition-colors duration-200">
           <Link className="link" to={`/product/${product._id}`}>

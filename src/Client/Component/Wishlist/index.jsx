@@ -21,7 +21,7 @@ export default function Wishlist() {
   if (!wishlistItems || wishlistItems.length === 0) {
     return (
       <p className="text-center text-gray-500 mt-10">
-        Your wishlist is empty 💔
+        Your wishlist is empty 
       </p>
     );
   }

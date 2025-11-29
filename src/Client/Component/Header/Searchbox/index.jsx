@@ -9,7 +9,7 @@ export default function Searchbox({ placeholder }) {
   const handleSearch = (e) => {
     e.preventDefault();
     if (query.trim()) {
-      navigate(`/search/${query}`); // نرسل النص في URL
+      navigate(`/search/${query}`); 
       setQuery("");
     }
   };

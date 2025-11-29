@@ -1,4 +1,3 @@
-// src/Admin/Pages/Home_Banner_List.jsx
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { DahTables } from "../../Components/DashTables";
@@ -9,7 +8,7 @@ import {
   fetchSlides,
   deleteSlide,
   updateSlide,
-} from "../../../Client/redux/Slices/homeSliderSlice";; // عدّل المسار لو مختلف
+} from "../../../Client/redux/Slices/homeSliderSlice";; 
 import {
   Dialog,
   DialogTitle,
@@ -22,13 +21,11 @@ export default function Home_Banner_List() {
   const dispatch = useDispatch();
   const { slides = [], loading } = useSelector((state) => state.homeSlider || {});
 
-  // حذف بوباب
   const [openDelete, setOpenDelete] = useState(false);
   const [toDeleteId, setToDeleteId] = useState(null);
 
-  // تعديل بوباب
   const [openEdit, setOpenEdit] = useState(false);
-  const [editingSlide, setEditingSlide] = useState(null); // object slide
+  const [editingSlide, setEditingSlide] = useState(null); 
   const [preview, setPreview] = useState(null);
   const [newFile, setNewFile] = useState(null);
 
@@ -36,7 +33,6 @@ export default function Home_Banner_List() {
     dispatch(fetchSlides());
   }, [dispatch]);
 
-  // ---------- Delete logic ----------
   const handleOpenDelete = (id) => {
     setToDeleteId(id);
     setOpenDelete(true);
@@ -55,10 +51,8 @@ export default function Home_Banner_List() {
     setToDeleteId(null);
   };
 
-  // ---------- Edit logic ----------
   const handleOpenEdit = (slide) => {
     setEditingSlide(slide);
-    // build preview URL (full URL)
     const imgUrl = slide.image
       ? slide.image.startsWith("http")
         ? slide.image
@@ -87,29 +81,23 @@ export default function Home_Banner_List() {
   const handleSaveEdit = () => {
     if (!editingSlide) return;
     const formData = new FormData();
-    // Only image for slides-only model. If you later add fields, append them here.
     if (newFile) {
       formData.append("image", newFile);
     } else {
-      // if user didn't select a new file, we don't append image -> backend keeps old image
     }
 
     dispatch(updateSlide({ id: editingSlide._id, formData }));
-    // optimistic close
     setOpenEdit(false);
     setEditingSlide(null);
     setPreview(null);
     setNewFile(null);
   };
 
-  // ---------- Table setup ----------
   const columns = [
     { id: "Slide_image", label: "Image", minWidth: 150 },
     { id: "action", label: "Action", minWidth: 150 },
   ];
 
-  // DahTables probably expects primitive values per cell.
-  // We pass image as URL string and Action as JSX (if your DahTables supports it).
   const rows =
     slides?.map((slide) => {
       const imageUrl = slide.image
@@ -143,7 +131,6 @@ export default function Home_Banner_List() {
 
       <DahTables columns={columns} rows={rows} title="Home Slider Banners" loading={loading} />
 
-      {/* Delete Confirm Dialog */}
       <Dialog open={openDelete} onClose={handleCancelDelete}>
         <DialogTitle> Delete</DialogTitle>
         <DialogContent>Are you sure you want to delete this image from the slider?</DialogContent>
@@ -159,7 +146,6 @@ export default function Home_Banner_List() {
         </DialogActions>
       </Dialog>
 
-      {/* Edit Dialog (change image) */}
       <Dialog open={openEdit} onClose={handleCancelEdit} maxWidth="sm" fullWidth>
         <DialogTitle>  Edit Slide Image</DialogTitle>
         <DialogContent className="flex flex-col items-start gap-4 mt-2">

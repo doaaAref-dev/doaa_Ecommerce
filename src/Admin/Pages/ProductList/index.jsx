@@ -4,7 +4,7 @@ import { fetchProducts } from "../../../Client/redux/Slices/productSlice";
 import { DahTables } from "../../Components/DashTables";
 
 import { RiDeleteBinLine } from "react-icons/ri";
-import { deleteProduct } from "../../../Client/redux/Slices/productSlice"; // تأكدي من المسار
+import { deleteProduct } from "../../../Client/redux/Slices/productSlice"; 
 import { Dialog, DialogTitle, DialogContent, DialogActions, Button, Typography } from "@mui/material";
 
 export default function ProductList() {
@@ -12,8 +12,7 @@ export default function ProductList() {
 
   const { products, loading, error } = useSelector((state) => state.products);
 const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
-const [deleteTarget, setDeleteTarget] = useState(null); // المنتج اللي هيتحذف
-
+const [deleteTarget, setDeleteTarget] = useState(null); 
 const confirmDelete = (product) => {
   setDeleteTarget(product);
   setDeleteDialogOpen(true);
@@ -40,8 +39,8 @@ const confirmDelete = (product) => {
     product: p.name,
     image: p.images?.length
   ? p.images[0].startsWith("http")
-    ? p.images[0]  // لو رابط كامل
-    : `http://localhost:5000/${p.images[0]}` // لو path بس
+    ? p.images[0]  
+    : `http://localhost:5000/${p.images[0]}` 
   : "https://via.placeholder.com/100x100?text=No+Image",
 
     Product_ID: p._id,
@@ -51,9 +50,7 @@ const confirmDelete = (product) => {
     Stoke: p.countInStock > 0 ? "In Stock" : "Out of Stock",
        Action: (
           <div className="flex gap-3 items-center">
-        {/* <button onClick={() => navigate(`/admin/products/edit/${p._id}`)}>
-  <CiEdit size={18} color="#22c55e" />
-</button> */}
+ 
    
 
 <button onClick={() => confirmDelete(p)}>
@@ -89,7 +86,7 @@ const confirmDelete = (product) => {
       variant="contained"
       onClick={() => {
         if (deleteTarget) {
-          const token = localStorage.getItem("token"); // أو من authSlice
+          const token = localStorage.getItem("token"); 
           dispatch(deleteProduct({ productId: deleteTarget._id, token }));
         }
         setDeleteDialogOpen(false);

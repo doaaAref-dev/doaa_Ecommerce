@@ -49,13 +49,12 @@ export default function Profile() {
 
   const handleLogout = () => {
     dispatch(logout());
-    navigate("/login"); // رجوع لصفحة اللوجين
+    navigate("/login"); 
   };
 
   return (
     <section className="py-10 w-full">
       <div className="container flex gap-5">
-        {/* Sidebar */}
         <div className="col1 bg-white shadow-md rounded-md w-[25%] h-[500px]">
           <div className="flex items-center gap-3 p-3">
           
@@ -138,7 +137,6 @@ export default function Profile() {
           </ul>
         </div>
 
-        {/* Content */}
         <div className="col2 bg-white shadow-md rounded-md w-[75%] h-auto p-4">
           <h2 className="mb-3">Welcome, {loading ? "..." : user?.name}</h2>
           <p>Email: {user?.email}</p>

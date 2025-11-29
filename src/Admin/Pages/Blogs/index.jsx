@@ -22,11 +22,9 @@ export default function Blogs() {
   const dispatch = useDispatch();
   const { blogs, loading } = useSelector((state) => state.blogs);
 
-  // state للحذف
   const [openDelete, setOpenDelete] = useState(false);
   const [selectedBlogId, setSelectedBlogId] = useState(null);
 
-  // state للتعديل
   const [openEdit, setOpenEdit] = useState(false);
   const [editData, setEditData] = useState({
     title: "",
@@ -39,7 +37,6 @@ export default function Blogs() {
     dispatch(fetchBlogs());
   }, [dispatch]);
 
-  // فتح بوباب الحذف
   const handleOpenDelete = (id) => {
     setSelectedBlogId(id);
     setOpenDelete(true);
@@ -55,7 +52,6 @@ export default function Blogs() {
     setOpenDelete(false);
   };
 
-  // فتح بوباب التعديل
   const handleOpenEdit = (blog) => {
     setSelectedBlogId(blog._id);
     setEditData({
@@ -67,7 +63,6 @@ export default function Blogs() {
     setOpenEdit(true);
   };
 
-  // حفظ التعديل
   const handleSaveEdit = () => {
     const formData = new FormData();
     formData.append("title", editData.title);
@@ -128,7 +123,6 @@ export default function Blogs() {
         loading={loading}
       />
 
-      {/* Dialog حذف */}
       <Dialog open={openDelete} onClose={handleCancelDelete}>
         <DialogTitle> Confirm Delete</DialogTitle>
         <DialogContent>Are you sure you want to delete this blog</DialogContent>
@@ -140,7 +134,6 @@ export default function Blogs() {
         </DialogActions>
       </Dialog>
 
-      {/* Dialog تعديل */}
       <Dialog open={openEdit} onClose={handleCancelEdit} maxWidth="sm" fullWidth>
         <DialogTitle>Edit Blog </DialogTitle>
         <DialogContent className="flex flex-col gap-3 mt-2">

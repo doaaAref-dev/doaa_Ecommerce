@@ -1,4 +1,3 @@
-// src/Component/Orders/OrderItem.jsx
 import React from "react";
 
 export default function OrderItem({ item }) {

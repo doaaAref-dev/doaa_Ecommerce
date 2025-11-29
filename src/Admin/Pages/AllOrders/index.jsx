@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { DahTables } from "../../Components/DashTables";
-import api from "../../../api/axios"; // أو المسار اللي فيه إعداد axios
+import api from "../../../api/axios"; 
 
 export default function AllOrders() {
   const [orders, setOrders] = useState([]);
@@ -17,11 +17,10 @@ console.log(orders);
     { id: "Status", label: "Status", minWidth: 70, align: "right" },
   ];
 
-  // 🧠 2. اجلب البيانات من الـ backend
  useEffect(() => {
   const fetchOrders = async () => {
     try {
-      const token = localStorage.getItem("token"); // أو من Redux لو بتخزّنيه هناك
+      const token = localStorage.getItem("token"); 
       const res = await api.get("/orders/all_order", {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -37,7 +36,6 @@ console.log(orders);
 }, []);
 
 
-  // 🧮 3. حضّري الـ rows بالشكل اللي الـ DahTables متوقعه
 const Order_rows = orders.map((order) => ({
   _id: order._id,
   product: order.items?.[0]?.productId?.name || "N/A",
@@ -48,7 +46,7 @@ const Order_rows = orders.map((order) => ({
   Product_ID: order.items?.[0]?.productId?._id || order._id,
   Price: `${order.items?.[0]?.total || order.totalPrice || 0}$`,
   Quantity: order.items?.[0]?.qty || 1,
-  status: order.status || "pending", // ✅ lowercase
+  status: order.status || "pending", 
 }));
 
 

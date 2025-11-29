@@ -8,19 +8,15 @@ import ProductSlider from "../ProductSlider";
 export default function PopularProducts() {
   const dispatch = useDispatch();
 
-  // ✅ الحالة من الـ Redux
   const { categories, loading: catLoading } = useSelector((state) => state.category);
   const { categoryProducts, loading: prodLoading } = useSelector((state) => state.products);
 
-  // ✅ state داخلي لتحديد التاب الحالي
   const [value, setValue] = useState(0);
 
-  // ✅ جلب الكاتيجوري عند أول تحميل
   useEffect(() => {
     dispatch(fetchCategories());
   }, [dispatch]);
 
-  // ✅ أول ما الكاتيجوري تتجاب أو التاب يتغير → نجيب المنتجات بتاعتها
   useEffect(() => {
     if (categories.length > 0) {
       const selectedCategory = categories[value];
@@ -31,13 +27,11 @@ export default function PopularProducts() {
     }
   }, [dispatch, categories, value]);
 
-  // ✅ تغيير التاب
   const handleChange = (event, newValue) => setValue(newValue);
 
   return (
     <section className="py-6 popular-products">
       <div className="container">
-        {/* ====== Header ====== */}
         <div className="flex items-center justify-between flex-wrap gap-4 mb-4">
           <div className="leftSide">
             <h3 className="text-[20px] font-semibold mb-1">Popular Products</h3>
@@ -46,7 +40,6 @@ export default function PopularProducts() {
             </p>
           </div>
 
-          {/* ====== Tabs ====== */}
           <div className="rightSide w-full md:w-[60%]">
             {catLoading ? (
               <p>Loading categories...</p>
@@ -57,7 +50,6 @@ export default function PopularProducts() {
                 variant="scrollable"
                 scrollButtons="auto"
               >
-                {/* ✅ عرض أول 3 كاتيجوري فقط */}
                 {categories.slice(0, 3).map((cat) => (
                   <Tab key={cat._id} label={cat.name} />
                 ))}
@@ -78,7 +70,6 @@ export default function PopularProducts() {
           </p>
         )}
 </div>
-        {/* ====== Products Section ====== */}
     
       </div>
     </section>

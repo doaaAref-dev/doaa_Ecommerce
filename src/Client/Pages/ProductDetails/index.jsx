@@ -1,4 +1,3 @@
-//ProductDetails
 
 import React from 'react'
 import ProductInfo from '../../Component/ProductInfo'

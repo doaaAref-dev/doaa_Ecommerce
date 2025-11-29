@@ -19,11 +19,11 @@ return (
         modules={[Navigation]}
         className="mySwiper2"
         breakpoints={{
-          320: { slidesPerView: 1, spaceBetween: 10 },   // صغيرة جدًا
-          480: { slidesPerView: 2, spaceBetween: 15 },   // هواتف
-          768: { slidesPerView: 3, spaceBetween: 20 },   // تابلت
-          1024: { slidesPerView: 4, spaceBetween: 20 },  // لابتوب
-          1280: { slidesPerView: 4, spaceBetween: 20 },  // ديسكتوب كبير
+          320: { slidesPerView: 1, spaceBetween: 10 },   
+          480: { slidesPerView: 2, spaceBetween: 15 },  
+          768: { slidesPerView: 3, spaceBetween: 20 },  
+          1024: { slidesPerView: 4, spaceBetween: 20 }, 
+          1280: { slidesPerView: 4, spaceBetween: 20 }, 
         }}
       >
         {items.length > 0 ? (

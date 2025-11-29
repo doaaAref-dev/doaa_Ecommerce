@@ -10,7 +10,7 @@ import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import Logout from '@mui/icons-material/Logout';
 import { useSelector, useDispatch } from "react-redux";
-import { logout } from "../../../Client/redux/Slices/AuthSlice"; // غير المسار حسب عندك
+import { logout } from "../../../Client/redux/Slices/AuthSlice"; 
 import { useNavigate } from "react-router-dom";
 
 export default function Header() {
@@ -33,7 +33,7 @@ export default function Header() {
 
   const handleLogout = () => {
     dispatch(logout());
-    navigate("/login"); // يوديه صفحة اللوجين
+    navigate("/login"); 
   };
     return (
         <header className='w-full h-[50px] bg-white shadow-md flex items-center justify-between ]  fixed  top-0 left-0 z-10'>

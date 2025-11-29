@@ -1,13 +1,12 @@
 import React, { useEffect } from 'react';
 import Slider from 'react-slick';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchSlides } from '../../redux/Slices/homeSliderSlice'; // عدّلي المسار حسب مكان السلايس عندك
+import { fetchSlides } from '../../redux/Slices/homeSliderSlice'; 
 
 export default function HomeBanner() {
   const dispatch = useDispatch();
   const { slides, loading, error } = useSelector((state) => state.homeSlider);
-// console.log(slides);
-
+ 
   useEffect(() => {
     dispatch(fetchSlides());
   }, [dispatch]);
@@ -37,11 +36,11 @@ export default function HomeBanner() {
           slides.map((slide) => (
             <div key={slide._id} className="relative">
               <img
-               src={`http://localhost:5000${slide.imageUrl || slide.image}`}// غيّري المفتاح حسب الـ backend
+               src={`http://localhost:5000${slide.imageUrl || slide.image}`}
                 alt={slide.title || 'Slide'}
                 className="w-full object-cover"
               />
-              {/* لو حابة تضيفي عنوان فوق الصورة */}
+             
               {slide.title && (
                 <div className="absolute inset-0 flex items-center justify-center bg-black/30 text-white text-2xl font-bold">
                   {slide.title}

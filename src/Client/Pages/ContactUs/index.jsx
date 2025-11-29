@@ -20,7 +20,6 @@ export default function ContactUs() {
           </Typography>
         </div>
 
-        {/* Right Form Section */}
         <Box
           sx={{
             background: "#fff",

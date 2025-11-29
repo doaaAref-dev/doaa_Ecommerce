@@ -1,11 +1,10 @@
-//DashTables
 import React from "react";
 import PropTypes from 'prop-types';
 import IconButton from '@mui/material/IconButton';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import Collapse from '@mui/material/Collapse';
-import api from '../../../api/axios'; // أو المسار اللي فيه إعداد axios
+import api from '../../../api/axios'; 
 
 import {
   Paper,
@@ -65,7 +64,6 @@ export function DahTables({ columns, rows, title,setOrders }) {
 
     <Paper sx={{ width: "100%", overflow: "hidden", p: 2 }}>
 
-      {/* Title */}
       <h4 style={{ marginBottom: "16px" }}>{title}</h4>
       {
         title === 'All Product' ?
@@ -132,10 +130,9 @@ export function DahTables({ columns, rows, title,setOrders }) {
 
 
 
-      {/* Table */}
       <TableContainer sx={{ maxHeight: 440 }}>
         <Table stickyHeader aria-label="sticky table">
-          {/* Header */}
+      
           <TableHead>
             <TableRow>
               {columns.map((column) => (
@@ -150,7 +147,6 @@ export function DahTables({ columns, rows, title,setOrders }) {
             </TableRow>
           </TableHead>
 
-          {/* Body */}
           <TableBody>
             {rows
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
@@ -175,7 +171,6 @@ export function DahTables({ columns, rows, title,setOrders }) {
                     {columns.map((column) => {
                       const value = row[column.id];
 
-                      // 🟢 شرط خاص لعمود Product: صورة + اسم
                       if (column.id === "product" || column.id === "Country" || column.id === "Name" || column.id === "User") {
                         console.log("IMAGE for row:", row.image);
 
@@ -230,7 +225,6 @@ export function DahTables({ columns, rows, title,setOrders }) {
 
 
 if (column.id === "Status") {
-  // ألوان لكل حالة
   const statusColors = {
     pending: { color: "#ff9800", bg: "#fff4e5" },
     processing: { color: "#3b82f6", bg: "#eff6ff" },
@@ -240,7 +234,6 @@ if (column.id === "Status") {
     default: { color: "#6b7280", bg: "#f3f4f6" },
   };
 
-  // الانتقالات المسموح بها
   const allowedTransitions = {
     pending: ["processing", "cancelled"],
     processing: ["shipped", "cancelled"],
@@ -251,7 +244,6 @@ if (column.id === "Status") {
 
   const currentStatus = row.status || "pending";
 
-  // دالة التعامل مع تغيير الحالة
   const handleChange = async (e, row) => {
     const newStatus = e.target.value;
 
@@ -372,7 +364,6 @@ if (column.id === "Status") {
         </Table>
       </TableContainer>
 
-      {/* Pagination */}
       <TablePagination
 
         rowsPerPageOptions={[10, 25, 100]}
@@ -387,7 +378,6 @@ if (column.id === "Status") {
   );
 }
 
-/////////////////////////////////////////////////////
 
 
 const data = [

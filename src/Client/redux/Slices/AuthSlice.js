@@ -1,7 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import api from "../../../api/axios";
 
-// ================== REGISTER ==================
 export const registerUser = createAsyncThunk(
   "auth/registerUser",
   async ({ name, email, password, confirmPassword }, thunkAPI) => {
@@ -16,7 +15,6 @@ export const registerUser = createAsyncThunk(
   }
 );
 
-// ================== LOGIN ==================
 export const loginUser = createAsyncThunk(
   "auth/loginUser",
   async ({ email, password }, thunkAPI) => {
@@ -34,7 +32,6 @@ export const loginUser = createAsyncThunk(
   }
 );
 
-// ================== LOAD USER ==================
 export const loadUser = createAsyncThunk(
   "auth/loadUser",
   async (_, thunkAPI) => {
@@ -51,7 +48,6 @@ export const loadUser = createAsyncThunk(
   }
 );
 
-// ================== UPDATE PROFILE ==================
 export const updateProfile = createAsyncThunk(
   "auth/updateProfile",
   async (formData, thunkAPI) => {
@@ -71,7 +67,7 @@ export const changePassword = createAsyncThunk(
   "auth/changePassword",
   async ({ oldPassword, newPassword }, { rejectWithValue, getState }) => {
     try {
-      const { auth } = getState(); // بنجيب التوكن من الauth
+      const { auth } = getState(); 
       const token = auth.user?.token;
 
       const res = await api.put(
@@ -86,13 +82,12 @@ export const changePassword = createAsyncThunk(
       return res.data;
     } catch (error) {
       return rejectWithValue(
-        error.response?.data?.message || "حدث خطأ أثناء تغيير الباسورد"
+        error.response?.data?.message || "An error occurred while changing the password"
       );
     }
   }
 );
 
-// ================== SLICE ==================
 const storedUser = localStorage.getItem("user");
 
 const authSlice = createSlice({
@@ -119,7 +114,6 @@ const authSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      // REGISTER
       .addCase(registerUser.pending, (state) => {
         state.loading = true;
       })
@@ -133,7 +127,6 @@ const authSlice = createSlice({
         state.error = action.payload;
       })
 
-      // LOGIN
       .addCase(loginUser.pending, (state) => {
         state.loading = true;
       })
@@ -147,7 +140,6 @@ const authSlice = createSlice({
         state.error = action.payload;
       })
 
-      // LOAD USER
       .addCase(loadUser.pending, (state) => {
         state.loading = true;
       })
@@ -160,7 +152,6 @@ const authSlice = createSlice({
         state.error = action.payload;
       })
 
-      // UPDATE PROFILE
       .addCase(updateProfile.pending, (state) => {
         state.loading = true;
       })

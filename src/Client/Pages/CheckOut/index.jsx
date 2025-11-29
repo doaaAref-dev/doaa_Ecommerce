@@ -62,19 +62,18 @@ export default function Checkout() {
         }
       );
 
-      alert("✅ Order placed successfully!");
+      alert(" Order placed successfully!");
       dispatch(clearCart());
-      navigate("/orders"); // أو صفحة نجاح الدفع
+      navigate("/orders"); 
     } catch (error) {
       console.error(error);
-      alert("❌ Failed to place order");
+      alert(" Failed to place order");
     }
   };
 
   return (
     <section className="py-10 bg-[#dcd0d0]">
       <div className="container flex gap-4 py-4">
-        {/* ================= LEFT SIDE (FORM) ================= */}
         <div className="LeftSide w-[70%]">
           <div className="Card bg-white p-4 shadow-md w-full">
             <h1 className="text-2xl font-bold mb-3">Billing Details</h1>
@@ -193,7 +192,6 @@ export default function Checkout() {
           </div>
         </div>
 
-        {/* ================= RIGHT SIDE (SUMMARY) ================= */}
         <div className="RightSide w-[30%]">
           <div className="Card bg-white p-4 shadow-md w-full">
             <h6 className="font-semibold text-lg mb-2">YOUR ORDER</h6>

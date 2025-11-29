@@ -18,7 +18,7 @@ import { logout } from "../../../Client/redux/Slices/AuthSlice";
 
 export default function Header() {
   const [open, setOpen] = useState(false)
-  const [hoveredCat, setHoveredCat] = useState(null); // الكاتيجوري اللي متحوفر عليها
+  const [hoveredCat, setHoveredCat] = useState(null); 
   const dispatch = useDispatch();
 const navigate = useNavigate();
   const { user} = useSelector((state) => state.auth);
@@ -46,8 +46,8 @@ console.log(categories);
     return () => document.removeEventListener("click", handleClickOutside);
   }, []);
   const handleLogout = () => {
-      dispatch(logout());        // يمسح التوكن من redux + localStorage
-      navigate("/Login");        // يرجعك لصفحة اللوجين
+      dispatch(logout());        
+      navigate("/Login");        
     };
 
   return (
@@ -69,17 +69,14 @@ console.log(categories);
     </Link>
   </div>
 
-  {/* Country DropDown */}
   <div className="flex items-center">
     <CountryDropDown />
   </div>
 
-  {/* SearchBox - يظهر على الديسكتوب فقط */}
   <div className="hidden sm:flex items-center flex-grow max-w-md">
     <Searchbox placeholder="Search For Your Product . . ." />
   </div>
 
-  {/* Profile + Cart */}
   <div className="flex items-center gap-3">
     <div className="profile-wrapper relative inline-block">
       <button className="profile-button">
@@ -155,7 +152,6 @@ console.log(categories);
                       )}
                     </div>
 
-                    {/* المينيو الجانبية للسوب كاتيجوري */}
                     {hoveredCat === cat._id && cat.subCategories?.length > 0 && (
                       <div className="absolute top-0 left-full bg-white shadow-lg p-3 w-56  min-h-full">
                         {cat.subCategories.map((sub) => (
@@ -188,19 +184,7 @@ console.log(categories);
 
                 </li>
 
-              
-                {/* <li className='list-inline-item'>
-                  <Link to='/'>electronics</Link>
-                  <div className='sub-menu shadow'>
-                    <Link to='/'><button>clothing</button></Link>
-                    <Link to='/'><button>watches</button></Link>
-                    <Link to='/'> <button>footwear</button></Link>
-                    <Link to='/'>  <button>sheos</button></Link>
-                  </div>
-                </li> */}
-
-                
-    {/* عرض باقي الكاتيجوريز ديناميكياً */}
+          
   {categories
       ?.filter(cat => ["cat1"].includes(cat.name))
       .map((cat) => (

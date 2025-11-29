@@ -26,13 +26,11 @@ export default function AllUsers() {
     dispatch(fetchUsers());
   }, [dispatch]);
 
-  // فتح المودال مع البيانات
   const handleEditClick = (user) => {
     setSelectedUser(user);
     setOpen(true);
   };
 
-  // حفظ التعديلات
   const handleSave = () => {
     if (selectedUser) {
       dispatch(updateUser({ id: selectedUser._id, updates: selectedUser }));
@@ -40,9 +38,8 @@ export default function AllUsers() {
     setOpen(false);
   };
 
-  // الحذف
   const handleDelete = (id) => {
-    if (window.confirm("هل أنت متأكد من الحذف؟")) {
+    if (window.confirm("Are you sure you want to delete this user?")) {
       dispatch(deleteUser(id));
     }
   };
@@ -82,7 +79,6 @@ export default function AllUsers() {
     <div className="!pl-[300px] !py-[100px] flex flex-col gap-3 !pr-[50px] bg-[#8fbac740]">
       <DahTables columns={AllUsers_columns} rows={AllUsers_rows} />
 
-      {/* مودال التعديل */}
       <Dialog open={open} onClose={() => setOpen(false)}>
         <DialogTitle>Edit User Data</DialogTitle>
         <DialogContent className="flex flex-col gap-3">

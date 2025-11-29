@@ -70,7 +70,6 @@ export default function Sign_Up() {
               className='w-full border p-2 mb-3'
             />
 
-            {/* لو في Error من السيرفر */}
             {error && (
               <p className="text-red-500 mb-2">{error}</p>
             )}

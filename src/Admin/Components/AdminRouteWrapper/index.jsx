@@ -14,13 +14,10 @@ import AllUsers from "../../Pages/AllUsers";
 import AddUser from "../../Pages/AddNewUser";
 import Home_Banner_List from "../../Pages/All_Home_Banner_Slide";
 import AddNew_HomeSlide from "../../Pages/AddNew_HomeSlide";
-import Banner1 from "../../Pages/Banner1";
-import Banner2 from "../../Pages/Banner2";
-import Add_Banner1 from "../../Pages/AddBanner1";
-import Add_Banner2 from "../../Pages/AddBanner2";
+
+
 import Blogs from "../../Pages/Blogs";
 import Add_Blog from "../../Pages/AddBlogs";
-import ManageLogo from "../../Pages/ManageLogo";
 
 export default function AdminRouteWrapper() {
 
@@ -47,13 +44,9 @@ export default function AdminRouteWrapper() {
         <Route path="AddUser" element={<AddUser />} />
         <Route path="Home_Banner_List" element={<Home_Banner_List />} />
         <Route path="AddNew_HomeSlide" element={<AddNew_HomeSlide />} />
-        <Route path="Banner1" element={<Banner1 />} />
-        <Route path="Banner2" element={<Banner2 />} />
-        <Route path="Add_Banner1" element={<Add_Banner1 />} />
-        <Route path="Add_Banner2" element={<Add_Banner2 />} />
+    
         <Route path="blogs" element={<Blogs />} />
         <Route path="AddBlogs" element={<Add_Blog />} />
-        <Route path="ManageLogo" element={<ManageLogo />} />
       </Routes>
     </>
   );

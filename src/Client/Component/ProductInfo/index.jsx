@@ -10,7 +10,7 @@ import { IoIosGitCompare } from "react-icons/io";
 import ReviewDrawer from "../ReveiwDr";
 import { fetchProductById, fetchProductsByCategory } from "../../redux/Slices/productSlice";
 import Productslice from "../ProductSlider";
-import { addToCart } from "../../redux/Slices/cartSlice"; // ✅ تعديل هنا
+import { addToCart } from "../../redux/Slices/cartSlice"; 
 import toast from "react-hot-toast";
 import { addToWishlist, removeFromWishlist } from "../../redux/Slices/wishlistSlice";
 
@@ -24,7 +24,7 @@ export default function ProductInfo({ product: propProduct, related = false }) {
   const [qty, setQty] = useState(1);
 const { wishlistItems } = useSelector((state) => state.wishlist);
 
-  // ✅ تحميل المنتج
+
   useEffect(() => {
     if (!propProduct && productId) {
       dispatch(fetchProductById(productId));
@@ -36,27 +36,26 @@ const isInWishlist =
   product && wishlistItems?.some((w) => w._id === product._id);
 
 
-  // ✅ تحميل المنتجات المتعلقة
+  
   useEffect(() => {
     if (related && product?.category) {
       dispatch(fetchProductsByCategory(product.category));
     }
   }, [dispatch, related, product?.category]);
 
-  // ✅ إضافة إلى الكارت المحلي
+ 
   const handleAddToCart = () => {
     dispatch(addToCart({ ...product, qty }));
     toast.success("Added to cart!");
   };
 
-  // ✅ إضافة إلى الـ wishlist
 const handleWishlistToggle = () => {
   if (isInWishlist) {
     dispatch(removeFromWishlist(product._id));
     toast("Removed from wishlist 🖤");
   } else {
     dispatch(addToWishlist(product));
-    toast.success("Added to wishlist 💖");
+    toast.success("Added to wishlist ");
   }
 };
 
@@ -67,7 +66,6 @@ const handleWishlistToggle = () => {
   return (
     <section className="bg-white p-5">
       <div className="container flex flex-col gap-10">
-        {/* ===== تفاصيل المنتج ===== */}
         <div className="flex gap-8">
           <div className="ProductZoomContainer w-[40%]">
             <ProductZoom images={product.images} />
@@ -138,7 +136,6 @@ const handleWishlistToggle = () => {
           </div>
         </div>
 
-        {/* ===== المنتجات المتعلقة ===== */}
         {related && categoryProducts?.length > 0 && (
           <div className="mt-10">
             <h2 className="text-[22px] font-semibold mb-4">Related Products</h2>

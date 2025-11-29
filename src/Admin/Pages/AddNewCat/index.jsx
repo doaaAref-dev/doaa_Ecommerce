@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addCategory } from "../../../Client/redux/Slices/categorySlice"; // تأكد من المسار
+import { addCategory } from "../../../Client/redux/Slices/categorySlice"; 
 import { TextField } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import Chip from "@mui/material/Chip";
@@ -22,7 +22,6 @@ export default function AddNewCat() {
   const [inputValue, setInputValue] = useState("");
 const [image, setImage] = useState(null);
 
-  // handle chips
   const handleDelete = (chipToDelete) => () => {
     setChipData((chips) => chips.filter((chip) => chip.key !== chipToDelete.key));
   };
@@ -41,7 +40,7 @@ const [image, setImage] = useState(null);
   };
 
   const handleUpload = (e) => {
-  const file = e.target.files[0]; // صورة واحدة بس
+  const file = e.target.files[0];
   if (!file) return;
 
   setImage({
@@ -54,7 +53,6 @@ const handleRemove = () => {
   setImage(null);
 };
 
-// handleSave
 const handleSave = () => {
   const formData = new FormData();
   formData.append("name", categoryName);
@@ -82,7 +80,7 @@ const handleSave = () => {
       >
         <div className="w-[100%] shadow rounded-2 p-3">
           <div className="flex flex-col gap-3">
-            {/* Category Name */}
+            
             <TextField
               label="Category Name"
               variant="outlined"
@@ -91,7 +89,7 @@ const handleSave = () => {
               onChange={(e) => setCategoryName(e.target.value)}
             />
 
-            {/* Images */}
+        
             <div
               style={{
                 border: "2px dashed #ccc",
@@ -174,7 +172,7 @@ const handleSave = () => {
 
             </div>
 
-            {/* Sub Categories */}
+          
             <div>
               <div className="flex justify-between mb-3">
                 <TextField
@@ -210,7 +208,7 @@ const handleSave = () => {
               </Paper>
             </div>
 
-            {/* Buttons */}
+          
             <div className="flex justify-between">
               <button
                 type="button"

@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  items: [], // كل منتجات الكارت
+  items: [], 
   totalQty: 0,
   totalPrice: 0,
 };
@@ -20,7 +20,6 @@ const cartSlice = createSlice({
         state.items.push({ ...product, qty: product.qty || 1 });
       }
 
-      // تحديث العدد الإجمالي والسعر الكلي
       state.totalQty = state.items.reduce((acc, item) => acc + item.qty, 0);
       state.totalPrice = state.items.reduce(
         (acc, item) =>
@@ -29,7 +28,6 @@ const cartSlice = createSlice({
       );
     },
 
-    // 🟢 تحديث الكمية مباشرة
     updateQty: (state, action) => {
       const { productId, qty } = action.payload;
       const item = state.items.find((i) => i._id === productId);
@@ -43,7 +41,6 @@ const cartSlice = createSlice({
       );
     },
 
-    // 🟢 زيادة الكمية
     incrementQty: (state, action) => {
       const productId = action.payload;
       const item = state.items.find((i) => i._id === productId);
@@ -57,7 +54,6 @@ const cartSlice = createSlice({
       );
     },
 
-    // 🟢 تقليل الكمية
     decrementQty: (state, action) => {
       const productId = action.payload;
       const item = state.items.find((i) => i._id === productId);
@@ -71,7 +67,6 @@ const cartSlice = createSlice({
       );
     },
 
-    // 🧹 تفريغ الكارت
     clearCart: (state) => {
       state.items = [];
       state.totalQty = 0;

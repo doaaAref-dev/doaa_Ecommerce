@@ -32,11 +32,11 @@ export default function Blogs() {
             spaceBetween={30}
             slidesPerGroup={1}
                breakpoints={{
-                        320: { slidesPerView: 1, spaceBetween: 10 }, // صغيرة جدًا
-                        480: { slidesPerView: 2, spaceBetween: 15 }, // هواتف
-                        768: { slidesPerView: 3, spaceBetween: 20 }, // تابلت
-                        1024: { slidesPerView: 4, spaceBetween: 30 }, // لابتوب
-                        1280: { slidesPerView: 4, spaceBetween: 60 }, // ديسكتوب كبير
+                        320: { slidesPerView: 1, spaceBetween: 10 }, 
+                        480: { slidesPerView: 2, spaceBetween: 15 }, 
+                        768: { slidesPerView: 3, spaceBetween: 20 }, 
+                        1024: { slidesPerView: 4, spaceBetween: 30 }, 
+                        1280: { slidesPerView: 4, spaceBetween: 60 }, 
                     }}
             modules={[Navigation]}
             className='blogslider'

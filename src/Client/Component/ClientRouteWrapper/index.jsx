@@ -4,7 +4,6 @@ import ClientHeader from "../Header";
 import Footer from "../Footer";
 
 import Home from "../../Pages/Home";
-// import ProductListing from "../../Pages/ProductListing";
 import ProductDetails from "../../Pages/ProductDetails";
 import Login from "../../Pages/Register/Sign_In";
 import Sign_Up from "../../Pages/Register/Sign_UP";
@@ -25,14 +24,11 @@ function ClientRouteWrapper() {
     <>
       <ClientHeader />
       <Routes>
-        {/* الصفحات العامة */}
         <Route path="/SignUp" element={<Sign_Up />} />
         <Route path="/Login" element={<Login />} />
 
-        {/* الصفحات للـ User العادي */}
         <Route path="/" element={<Home />} />
         <Route path="/Profile" element={<Profile />} />
-        {/* <Route path="/ProductListing" element={<ProductListing />} /> */}
         <Route path="/Card/:productId" element={<ProductDetails />} />
         <Route path="/Cart" element={<MyBag />} />
         <Route path="/Checkout" element={<Checkout />} />

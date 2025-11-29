@@ -19,7 +19,7 @@ export default function PersonalInfo() {
     phone: "",
   });
 
-  // أول ما user يتغير يتعمل setFormData
+  
   useEffect(() => {
     if (user) {
       setFormData({
@@ -86,7 +86,7 @@ export default function PersonalInfo() {
             color="primary"
             className="m-3"
            onClick={(e) => {
-    e.preventDefault(); // يمنع أي submit بالخطأ
+    e.preventDefault(); 
     setEditMode(true);
   }}
           >

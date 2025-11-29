@@ -37,7 +37,6 @@ export default function CustomizedDialogs({ open, setOpen, product }) {
       </IconButton>
 
       <DialogContent dividers>
-        {/* نمرر المنتج هنا */}
         <ProductInfo product={product} />
       </DialogContent>
     </BootstrapDialog>

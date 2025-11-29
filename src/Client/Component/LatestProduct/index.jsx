@@ -8,7 +8,7 @@ export default function LatestProduct() {
 const { latestProducts, loading, error } = useSelector((state) => state.products);
 
   useEffect(() => {
-    dispatch(fetchLatestProducts(8)); // مثلاً آخر 8 منتجات
+    dispatch(fetchLatestProducts(8)); 
   }, [dispatch]);
 
   if (loading) return <p> Loading... </p>;

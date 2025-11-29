@@ -23,7 +23,7 @@ export default function ChangePassword() {
     e.preventDefault();
 
     if (formData.newPassword !== formData.confirmPassword) {
-      alert("كلمة السر الجديدة غير متطابقة");
+      alert("The new passwords do not match");
       return;
     }
 
@@ -37,7 +37,7 @@ export default function ChangePassword() {
 
   useEffect(() => {
     if (success) {
-      alert("✅ تم تغيير كلمة المرور بنجاح");
+      alert("Password changed successfully");
       setFormData({
         oldPassword: "",
         newPassword: "",

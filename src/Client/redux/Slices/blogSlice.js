@@ -1,7 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import API_URL from "../../../api/axios";
 
-// جلب جميع المدونات
 export const fetchBlogs = createAsyncThunk("blogs/fetchAll", async (_, { rejectWithValue }) => {
   try {
     const res = await API_URL.get("/blogs");
@@ -11,7 +10,6 @@ export const fetchBlogs = createAsyncThunk("blogs/fetchAll", async (_, { rejectW
   }
 });
 
-// إضافة مدونة
 export const createBlog = createAsyncThunk("blogs/create", async (formData, { rejectWithValue }) => {
   try {
     const res = await API_URL.post("/blogs", formData, {
@@ -23,7 +21,6 @@ export const createBlog = createAsyncThunk("blogs/create", async (formData, { re
   }
 });
 
-// تحديث مدونة
 export const updateBlog = createAsyncThunk(
   "blogs/update",
   async ({ id, formData }, { rejectWithValue }) => {
@@ -38,7 +35,6 @@ export const updateBlog = createAsyncThunk(
   }
 );
 
-// حذف مدونة
 export const deleteBlog = createAsyncThunk("blogs/delete", async (id, { rejectWithValue }) => {
   try {
     await API_URL.delete(`/blogs/${id}`);
@@ -47,7 +43,6 @@ export const deleteBlog = createAsyncThunk("blogs/delete", async (id, { rejectWi
     return rejectWithValue(error.response?.data?.message || "Error");
   }
 });
-// جلب مدونة واحدة حسب الـ id
 export const fetchBlogById = createAsyncThunk(
   "blogs/fetchById",
   async (id, { rejectWithValue }) => {
@@ -66,7 +61,7 @@ const blogSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      // Fetch
+      
       .addCase(fetchBlogs.pending, (state) => {
         state.loading = true;
       })
@@ -79,17 +74,14 @@ const blogSlice = createSlice({
         state.error = action.payload;
       })
 
-      // Create
       .addCase(createBlog.fulfilled, (state, action) => {
         state.blogs.unshift(action.payload);
       })
 
-      // Update
       .addCase(updateBlog.fulfilled, (state, action) => {
         state.blogs = state.blogs.map((b) => (b._id === action.payload._id ? action.payload : b));
       })
 
-      // Delete
       .addCase(deleteBlog.fulfilled, (state, action) => {
         state.blogs = state.blogs.filter((b) => b._id !== action.payload);
       })
@@ -100,7 +92,7 @@ const blogSlice = createSlice({
   state.loading = false;
   const existing = state.blogs.find((b) => b._id === action.payload._id);
   if (!existing) {
-    state.blogs.push(action.payload); // حفظها في الstate لو مش موجودة
+    state.blogs.push(action.payload); 
   }
 })
 .addCase(fetchBlogById.rejected, (state, action) => {

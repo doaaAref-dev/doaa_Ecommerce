@@ -36,12 +36,10 @@ return(
 <PopularProduct/>
   
   <section className="row mt-4 g-4">
-  {/* Banner */}
   <div className="col-12 col-md-6">
     <HomeBanner />
   </div>
 
-  {/* Images */}
   <div className="col-12 col-md-6 row g-4 mt-0">
     <div className="col-6 col-sm-6 col-12 gap-2">
       <img src={img9} alt="" className=" h-[200px] w-full "  />

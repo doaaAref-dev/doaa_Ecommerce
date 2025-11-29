@@ -6,7 +6,7 @@ import ProductSlice from "../../Component/ProductSlider";
 
 export default function MyCart() {
   const { items, totalPrice } = useSelector((state) => state.cart);
-  const user = useSelector((state) => state.auth.user); // لو عندك auth slice
+  const user = useSelector((state) => state.auth.user); 
   const navigate = useNavigate();
 
   return (

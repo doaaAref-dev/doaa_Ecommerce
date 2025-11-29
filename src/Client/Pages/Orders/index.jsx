@@ -10,10 +10,10 @@ export default function Orders() {
   useEffect(() => {
     const fetchOrders = async () => {
       try {
-        const res = await api.get("/orders/myorders"); // ✅ التوكن بيضاف تلقائي من interceptor
+        const res = await api.get("/orders/myorders"); 
         setOrders(res.data);
       } catch (err) {
-        console.error("❌ Failed to fetch orders:", err);
+        console.error(" Failed to fetch orders:", err);
         setError("Failed to load orders. Please login again.");
       } finally {
         setLoading(false);
@@ -64,12 +64,7 @@ export default function Orders() {
                 </span>
               </div>
 
-              {/* منتجات الأوردر */}
-              {/* <div className="flex flex-wrap gap-3">
-                {order.items.map((item) => (
-  <OrderItem key={item._id} item={item} />
-))}
-              </div> */}
+              
 
               <div className="flex justify-between items-center mt-4 border-t pt-3">
                 <span className="text-gray-700">Total:</span>

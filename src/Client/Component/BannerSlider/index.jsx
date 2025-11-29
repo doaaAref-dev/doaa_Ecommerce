@@ -1,5 +1,4 @@
-import React from 'react'
-import Slider from 'react-slick';
+
 import BannerBox from '../BannerBox';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
@@ -18,11 +17,11 @@ console.log(images);
     modules={[Navigation]}
     className="mySwiper2"
     breakpoints={{
-      320: { slidesPerView: 1, spaceBetween: 10 },   // هواتف صغيرة
-      480: { slidesPerView: 1, spaceBetween: 20 },   // هواتف كبيرة
-      768: { slidesPerView: 2, spaceBetween: 30 },   // تابلت
-      1024: { slidesPerView: 3, spaceBetween: 40 },  // لابتوب
-      1280: { slidesPerView: items, spaceBetween: 50 } // ديسكتوب كبير
+      320: { slidesPerView: 1, spaceBetween: 10 },  
+      480: { slidesPerView: 1, spaceBetween: 20 },   
+      768: { slidesPerView: 2, spaceBetween: 30 },   
+      1024: { slidesPerView: 3, spaceBetween: 40 }, 
+      1280: { slidesPerView: items, spaceBetween: 50 } 
     }}
   >
     {images?.map((img, index) => (

@@ -1,9 +1,7 @@
-// تحديث كاتيجوري
 
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import API_URL from "../../../api/axios";
 
-// إضافة كاتيجوري جديدة
 export const addCategory = createAsyncThunk(
   "category/addCategory",
   async (formData, { rejectWithValue }) => {
@@ -18,7 +16,6 @@ export const addCategory = createAsyncThunk(
   }
 );
 
-// جلب الكاتيجوري
 export const fetchCategories = createAsyncThunk(
   "category/fetchCategories",
   async (_, { rejectWithValue }) => {
@@ -49,7 +46,6 @@ export const updateCategory = createAsyncThunk(
   }
 );
 
-// حذف كاتيجوري
 export const deleteCategory = createAsyncThunk(
   "category/deleteCategory",
   async (id, { rejectWithValue }) => {
@@ -73,13 +69,11 @@ const categorySlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      // Update
       .addCase(updateCategory.fulfilled, (state, action) => {
         state.categories = state.categories.map((cat) =>
           cat._id === action.payload._id ? action.payload : cat
         );
       })
-      // Delete
       .addCase(deleteCategory.fulfilled, (state, action) => {
         state.categories = state.categories.filter((cat) => cat._id !== action.payload);
       })
@@ -94,7 +88,6 @@ const categorySlice = createSlice({
         state.loading = false;
         state.error = action.payload;
       })
-      // جلب
       .addCase(fetchCategories.pending, (state) => {
         state.loading = true;
       })

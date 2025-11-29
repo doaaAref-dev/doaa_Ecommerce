@@ -10,7 +10,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { fetchCategories } from "../../redux/Slices/categorySlice";
 export default function HomeCat() {
     const { categories } = useSelector((state) => state.category);
-    // console.log(categories);
     const dispatch = useDispatch();
 const navigate = useNavigate();
 
@@ -24,16 +23,16 @@ const navigate = useNavigate();
             <div className="container">
                 <Swiper
                     navigation={true}
-                    spaceBetween={20} // أقل فراغ على الموبايل
+                    spaceBetween={20} 
                     slidesPerGroup={1}
                     modules={[Navigation]}
                     className="mySwiper"
                     breakpoints={{
-                        320: { slidesPerView: 1, spaceBetween: 10 }, // صغيرة جدًا
-                        480: { slidesPerView: 2, spaceBetween: 15 }, // هواتف
-                        768: { slidesPerView: 3, spaceBetween: 20 }, // تابلت
-                        1024: { slidesPerView: 4, spaceBetween: 30 }, // لابتوب
-                        1280: { slidesPerView: 5, spaceBetween: 60 }, // ديسكتوب كبير
+                        320: { slidesPerView: 1, spaceBetween: 10 }, 
+                        480: { slidesPerView: 2, spaceBetween: 15 }, 
+                        768: { slidesPerView: 3, spaceBetween: 20 }, 
+                        1024: { slidesPerView: 4, spaceBetween: 30 }, 
+                        1280: { slidesPerView: 5, spaceBetween: 60 }, 
                     }}
                 >
                     {categories?.map((cat) => (

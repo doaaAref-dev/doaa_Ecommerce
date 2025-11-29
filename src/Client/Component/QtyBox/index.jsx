@@ -11,10 +11,8 @@ export default function Quantity({ value = 1, onChange, productId }) {
     setLocalQty(newQty);
 
     if (onChange) {
-      // الحالة الأولى: مستخدم في صفحة المنتج
       onChange(newQty);
     } else if (productId) {
-      // الحالة الثانية: مستخدم في الكارت
       dispatch(updateQty({ productId, qty: newQty }));
     }
   };

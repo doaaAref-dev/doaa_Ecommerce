@@ -23,7 +23,6 @@ export default function AddUser() {
   const dispatch = useDispatch();
   const { form } = useSelector((state) => state.users);
 
-  // submit
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -110,7 +109,6 @@ export default function AddUser() {
               />
             </div>
 
-            {/* صورة المستخدم */}
             <div
               className="w-[50%]"
               style={{
@@ -189,7 +187,6 @@ export default function AddUser() {
             </div>
           </div>
 
-          {/* الصلاحيات */}
           <div>
             <h2>Permission</h2>
             <div className="flex justify-between my-3 flex-wrap gap-4">

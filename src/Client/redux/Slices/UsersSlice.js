@@ -1,8 +1,6 @@
-// redux/slices/userSlice.js
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import API_URL from "../../../api/axios";
 
-// جلب كل المستخدمين
 export const fetchUsers = createAsyncThunk("users/fetchUsers", async (_, thunkAPI) => {
   try {
     const res = await API_URL.get("/users");
@@ -12,7 +10,6 @@ export const fetchUsers = createAsyncThunk("users/fetchUsers", async (_, thunkAP
   }
 });
 
-// إضافة مستخدم جديد
 export const addUser = createAsyncThunk("users/addUser", async (formData, thunkAPI) => {
   try {
     const res = await API_URL.post("/users", formData, {
@@ -24,7 +21,6 @@ export const addUser = createAsyncThunk("users/addUser", async (formData, thunkA
   }
 });
 
-// تحديث مستخدم
 export const updateUser = createAsyncThunk(
   "users/updateUser",
   async ({ id, formData }, thunkAPI) => {
@@ -40,11 +36,10 @@ export const updateUser = createAsyncThunk(
 );
 
 
-// حذف مستخدم
 export const deleteUser = createAsyncThunk("users/deleteUser", async (id, thunkAPI) => {
   try {
     await API_URL.delete(`/users/${id}`);
-    return id; // نرجع الـ id عشان نشيله من الستور
+    return id; 
   } catch (err) {
     return thunkAPI.rejectWithValue(err.response?.data?.message || "Failed to delete user");
   }
@@ -102,7 +97,6 @@ const userSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      // fetch
       .addCase(fetchUsers.pending, (state) => {
         state.loading = true;
         state.error = null;
@@ -116,13 +110,11 @@ const userSlice = createSlice({
         state.error = action.payload;
       })
 
-      // add
       .addCase(addUser.fulfilled, (state, action) => {
         state.loading = false;
         state.list.push(action.payload);
       })
 
-      // update
      .addCase(updateUser.fulfilled, (state, action) => {
       state.loading = false;
       state.list = state.list.map((u) =>
@@ -130,7 +122,6 @@ const userSlice = createSlice({
       );
     })
 
-      // delete
       .addCase(deleteUser.fulfilled, (state, action) => {
         state.loading = false;
         state.list = state.list.filter((u) => u._id !== action.payload);

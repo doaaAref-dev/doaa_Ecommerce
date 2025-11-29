@@ -13,7 +13,7 @@ export function Info({
   Qnt,
   customgap,
   Font,
-   // 🟢 بنستقبل المنتجات اللي في الكارت
+   
 }) {
     const { items, totalPrice } = useSelector((state) => state.cart);
   
@@ -22,7 +22,7 @@ export function Info({
   const defaultImageSize = "w-[200px] h-[200px]";
   const defaultFont = "text-[16px]";
 
-  // 🟡 لو الكارت فاضي
+
   if (!items.length)
     return (
       <p className="text-center mt-5 text-gray-500">
@@ -32,7 +32,7 @@ export function Info({
 
   return (
     <div className="CartItems scrollbar overflow-y-auto h-[400px] overflow-x-hidden">
-      {/* 🟢 نعرض المنتجات اللي في الكارت */}
+  
       {items.map((item) => (
         <div
           key={item.product?._id || item._id}
@@ -48,7 +48,7 @@ export function Info({
             <div className="flex gap-3 items-center justify-between">
               <p className={Font || defaultFont}>{item.product?.name}</p>
 
-              {/* 🗑️ أيقونة الحذف */}
+            
               <RiDeleteBin6Line
                 className="cursor-pointer text-red-500  text-[20px]"
                 title="Remove from cart"
@@ -179,46 +179,3 @@ export function CartDrawer({ open, setOpen }) {
 
 
 
-
-
-
-
-// <div className='Item mt-4 border-b  border-[rgba(0,0,0,0.12)] p-4    items-center'>
-          
-//             <div className='m-3 flex gap-2 items-center'>
-//  <button className=' bg-[#ff6347] rounded-5 w-[100px] p-1 text-white'>In Progress</button>| <span className='text-[14px]'>14-May-2025</span>
-
-//             </div>
-          
-          
-//           <div >
-            
-//             <div className='flex  gap-3' >
-//              <img className='w-[100px] h-[100px]'
-//             src="https://www.dresscodeme.com/wp-content/uploads/2024/03/Untitleddesign-2025-05-21T170434.21.jpeg" alt="" />
-
-//          <div className='flex flex-col gap-2'>
-
-
-//               {/* <RiDeleteBin6Line /> */}
-//               <div className='flex gap-10'>
-//  <p className={Font  defaultFont}>Lorem ipsum dolor sit ame. Sapiente.</p>
-//                <p className='text-[#ff6347]'>Order ID : <span>#1823k84bakeh</span></p>
-               
-//          </div>
-//              <div className={customgap  defaultgap +' items-center'}>
-//               <span className={Font  defaultFont}>Quantity <span  className={`${Font  defaultFont} text-[#368da7] font-[600]`}  >1</span></span>
-//               <span className={Font  defaultFont}>price <span  className={`${Font  defaultFont} text-[#368da7] font-[600]`} >$1000</span></span>
-//               { Qnt||null}
-             
-//             </div>
-//             </div>
-
-//             </div>
-
-          
-          
-//           </div>
-
-
-//         </div>

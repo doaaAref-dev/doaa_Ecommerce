@@ -16,7 +16,6 @@ console.log(reviews);
 
   const productId = product._id;
 
-  // fetch مرة واحدة عند فتح الـ drawer فقط
   useEffect(() => {
     if (open && productId) {
       dispatch(fetchReviews(`${productId}?t=${Date.now()}`));

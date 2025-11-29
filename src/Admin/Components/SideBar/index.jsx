@@ -19,11 +19,10 @@ export default function SideBar() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
    const handleLogout = () => {
-    dispatch(logout());        // يمسح التوكن من redux + localStorage
-    navigate("/Login");        // يرجعك لصفحة اللوجين
+    dispatch(logout());        
+    navigate("/Login");        
   };
 
-// console.log('openDropdown'+openDropdown)
   const toggleDropdown = (name) => {
    
     setOpenDropdown(prev => (prev === name ? null : name));
@@ -31,7 +30,7 @@ export default function SideBar() {
   };
 
 const menuItems = [
-  { name: 'Dashboard', icon: <RxDashboard />, path: '/admin' }, // /admin
+  { name: 'Dashboard', icon: <RxDashboard />, path: '/admin' }, 
   {
     name: 'Home Slides', icon: <IoImagesSharp />, subItems: [
       { name: 'Home Banner List', path: '/admin/Home_Banner_List' },
@@ -57,21 +56,13 @@ const menuItems = [
     ]
   },
   { name: 'Orders', icon: <SlBasket />, path: '/admin/AllOrders' },
-  // {
-  //   name: 'Banners', icon: <IoImagesSharp />, subItems: [
-  //     { name: 'Banner1', path: '/admin/Banner1' },
-  //     { name: 'Add_Banner1', path: '/admin/Add_Banner1' },
-  //     { name: 'Banner2', path: '/admin/Banner2' },
-  //     { name: 'Add_Banner2', path: '/admin/Add_Banner2' }
-  //   ]
-  // },
+
   {
     name: 'Blogs', icon: <TbLetterB />, subItems: [
       { name: 'Blogs', path: '/admin/blogs' },
       { name: 'AddBlogs', path: '/admin/AddBlogs' }
     ]
   },
-  // { name: 'Manage Logo', icon: <TbLetterB />, path: '/admin/ManageLogo' },
 ];
 
 
@@ -80,19 +71,16 @@ const menuItems = [
   return (
 <div className="Dash_Sidebar fixed top-0 left-0 z-20 h-screen w-[240px] bg-[#fafafa] border-r border-gray-200 flex flex-col">
 
-  {/* Logo */}
   <div className="h-[70px] px-6 flex items-center border-b border-gray-200">
     <img src={Logo} alt="logo" className="h-[40px] opacity-90" />
   </div>
 
-  {/* Navigation */}
   <div className="flex-1 overflow-y-auto scrollbar-hide">
     <ul className="p-3 space-y-2">
 
       {menuItems.map((item) => (
         <li key={item.name} className="">
 
-          {/* If item has subitems */}
           {item.subItems ? (
             <>
               <button
@@ -135,7 +123,6 @@ const menuItems = [
             </>
 
           ) : (
-            /* Single Item */
             <NavLink
               to={item.path}
               className={({ isActive }) =>
@@ -151,7 +138,6 @@ const menuItems = [
         </li>
       ))}
 
-      {/* Logout */}
       <li className="pt-4 border-t border-gray-200">
         <button
           onClick={handleLogout}

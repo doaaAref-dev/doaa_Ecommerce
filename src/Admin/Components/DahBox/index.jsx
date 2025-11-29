@@ -7,7 +7,6 @@ import { MdOutlineInsertDriveFile } from "react-icons/md";
 import { FaRegUser } from "react-icons/fa";
 import ReactApexChart from "react-apexcharts";
 
-// مكون صغير للشارت
 const MiniChart = ({ color, height, data }) => {
   const series = [{ data }];
 
@@ -79,7 +78,6 @@ export default function DashBox() {
           key={i}
           className="bg-white shadow-md rounded-2xl p-4 flex flex-col  h-auto  !m-0"
         >
-          {/* الأعلى */}
           <div className="flex justify-between items-center">
             <div className="flex items-center gap-3">
               <div
@@ -114,7 +112,6 @@ export default function DashBox() {
             </div>
           </div>
 
-          {/* الشارت */}
           <div className="mt-3 ">
             <MiniChart
   color={

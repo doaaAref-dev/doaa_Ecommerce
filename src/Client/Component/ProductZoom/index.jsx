@@ -15,12 +15,10 @@ export default function ProductZoom({ images = [] }) {
     }
   }
 
-  // لو مفيش صور في الداتا، نحط صورة افتراضية
   const validImages = images.length > 0 ? images : ["/default.jpg"];
 
   return (
     <div className='flex gap-8'>
-      {/* الصور الجانبية */}
       <div className='w-[15%] py-10 h-[500px] overflow-hidden'>
         <Swiper
           direction='vertical'
@@ -48,7 +46,6 @@ export default function ProductZoom({ images = [] }) {
         </Swiper>
       </div>
 
-      {/* الصورة الرئيسية */}
       <div className='zoomContainer w-[85%] h-[500px] overflow-hidden'>
         <Swiper
           onSwiper={(swiper) => (mainSwiperRef.current = swiper)}

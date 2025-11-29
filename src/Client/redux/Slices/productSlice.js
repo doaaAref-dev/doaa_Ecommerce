@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import api from "../../../api/axios"; // عدل المسار
+import api from "../../../api/axios"; 
 
-// Async thunk لإضافة المنتج
+
 export const addProduct = createAsyncThunk(
   
   "products/addProduct",
@@ -113,7 +113,6 @@ export const updateProduct = createAsyncThunk(
 );
 
 
-// 🟢 حذف المنتج
 export const deleteProduct = createAsyncThunk(
   "products/deleteProduct",
   async ({ productId, token }, { rejectWithValue }) => {
@@ -121,7 +120,7 @@ export const deleteProduct = createAsyncThunk(
       await api.delete(`/products/${productId}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
-      return productId; // نرجع ID للحذف من Redux
+      return productId;
     } catch (err) {
       console.error(err.response?.data || err.message);
       return rejectWithValue(err.response?.data || err.message);
@@ -136,21 +135,21 @@ export const addReview = createAsyncThunk(
   }
 );
 
-// جلب الـ reviews
+
 export const fetchReviews = createAsyncThunk(
   "products/fetchReviews",
   async (productId) => {
     const res = await api.get(`/products/reviews/${productId}`, {
       headers: { "Cache-Control": "no-cache", Pragma: "no-cache" },
     });
-    return res.data; // array of reviews
+    return res.data; 
   }
 );
 
 const productSlice = createSlice({
   name: "products",
   initialState: {
-    // بيانات إنشاء المنتج
+   
     title: "",
     brand: "",
     description: "",
@@ -166,15 +165,15 @@ const productSlice = createSlice({
 countInStock:"",
 Quantity:"",
 
-    // بيانات العرض
-    products: [],            // كل المنتجات
-    latestProducts: [],       // أحدث المنتجات (عشان ما تتبدلش)
-    categoryProducts: [],     // المنتجات حسب الفئة
+   
+    products: [],           
+    latestProducts: [],     
+    categoryProducts: [],  
 singleProduct: null,
   searchResults: [],
   reviews:[],
     loading: false,
-        reviewsLoading: false, // خاص بالـ reviews
+        reviewsLoading: false, 
 
     error: null,
   },
@@ -196,7 +195,7 @@ singleProduct: null,
   },
   extraReducers: (builder) => {
     builder
-      // 🟢 كل المنتجات
+   
       .addCase(fetchProducts.pending, (state) => {
         state.loading = true;
         state.error = null;
@@ -210,7 +209,7 @@ singleProduct: null,
         state.error = action.payload;
       })
 
-      // 🟣 المنتجات حسب الفئة
+     
       .addCase(fetchProductsByCategory.pending, (state) => {
         state.loading = true;
       })
@@ -223,14 +222,13 @@ singleProduct: null,
         state.error = action.payload;
       })
 
-      // 🟡 أحدث المنتجات
       .addCase(fetchLatestProducts.pending, (state) => {
         state.loading = true;
         state.error = null;
       })
       .addCase(fetchLatestProducts.fulfilled, (state, action) => {
         state.loading = false;
-        state.latestProducts = action.payload; // ✅ هنا نخزنها منفصلة
+        state.latestProducts = action.payload; 
       })
       .addCase(fetchLatestProducts.rejected, (state, action) => {
         state.loading = false;
@@ -299,14 +297,12 @@ singleProduct: null,
         state.error = action.error.message;
       })
       .addCase(addReview.fulfilled, (state, action) => {
-        // نضيف آخر review فقط (حسب تصميمك)
         if (Array.isArray(action.payload.reviews)) {
           state.reviews.push(action.payload.reviews.slice(-1)[0]);
         }
       })
 
 
-      // 🚀 fetch by subcategory
       .addCase(fetchProductsBySub.pending, (state) => {
         state.loading = true;
         state.error = null;

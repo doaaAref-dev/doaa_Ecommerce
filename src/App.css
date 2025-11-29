@@ -15,11 +15,11 @@ background-color: #368da7;
 }
 
 .scrollbar-hide::-webkit-scrollbar {
-  display: none; /* Chrome, Safari */
+  display: none;
 }
 .scrollbar-hide {
-  -ms-overflow-style: none;  /* IE و Edge */
-  scrollbar-width: none;     /* Firefox */
+  -ms-overflow-style: none; 
+  scrollbar-width: none;    
 }
 
 
@@ -309,11 +309,11 @@ background-color: #fff;
     display: flex !important;
     justify-content: center !important;
     align-items: center !important;
-    font-size: 17px !important; /* حجم أصغر */
-    width: 40px !important;      /* عرض أصغر */
-    height: 40px !important;     /* ارتفاع أصغر */
+    font-size: 17px !important; 
+    width: 40px !important;    
+    height: 40px !important;     
     color: tomato !important;
-    background: rgba(255, 255, 255, 0.158) !important; /* لو حابة خلفية صغيرة شفافة */
+    background: rgba(255, 255, 255, 0.158) !important; 
     border-radius: 50% !important;
 }
 
@@ -419,29 +419,8 @@ margin: 10px;
 .zoomslider .swiper-slide{
     height: auto !important;
 }
-/* .zoomslider .swiper-button-next::after{
-  transform: rotate( 90deg);
-}
-.zoomslider .swiper-button-prev::after{
-   transform: rotate( 90deg);
-}
-.zoomslider .swiper-button-prev{
 
-    top: 20px !important;
-    left: 0px !important;
-    width: 100% !important;
-    height: 30px !important;
-    border-radius: 0px !important;
-}
-.zoomslider .swiper-button-next{
 
-    top: inherit !important;
-    bottom: 0px !important;
-    right: inherit !important;
-    width: 100% !important;
-    height: 30px !important;
-    border-radius: 0px !important;
-} */
  .ContentContainer .size  button{
     width: 40px;
     height: 30px;
